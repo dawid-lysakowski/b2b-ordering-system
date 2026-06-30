@@ -1,0 +1,268 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rejestracja klienta B2B{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-xl-7">
+        <div class="mb-4 text-center">
+            <h1 class="h3 mb-2">Rejestracja klienta B2B</h1>
+            <p class="text-muted mb-0">
+                Wypełnij krótki formularz zgłoszeniowy. Konto zostanie aktywowane po weryfikacji.
+            </p>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between small text-muted mb-2">
+                        <span>Krok <span id="currentStepLabel">1</span> z 4</span>
+                        <span id="stepTitleLabel">Dane firmy</span>
+                    </div>
+
+                    <div class="progress" style="height: 8px;">
+                        <div id="formProgress"
+                             class="progress-bar"
+                             role="progressbar"
+                             style="width: 25%;"
+                             aria-valuenow="25"
+                             aria-valuemin="0"
+                             aria-valuemax="100">
+                        </div>
+                    </div>
+                </div>
+
+                {{ form_start(form, {'attr': {'id': 'registrationRequestForm'}}) }}
+
+                <div class="form-step" data-step="1" data-title="Dane firmy">
+                    <h2 class="h5 mb-3">Dane firmy</h2>
+
+                    <div class="row g-3">
+                        <div class="col-md-8">
+                            {{ form_row(form.companyName) }}
+                        </div>
+
+                        <div class="col-md-4">
+                            {{ form_row(form.taxNumber) }}
+                        </div>
+
+                        <div class="col-md-6">
+                            {{ form_row(form.companyEmail) }}
+                        </div>
+
+                        <div class="col-md-6">
+                            {{ form_row(form.companyPhone) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-step d-none" data-step="2" data-title="Dane użytkownika">
+                    <h2 class="h5 mb-3">Dane użytkownika</h2>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            {{ form_row(form.userFirstName) }}
+                        </div>
+
+                        <div class="col-md-6">
+                            {{ form_row(form.userLastName) }}
+                        </div>
+
+                        <div class="col-md-6">
+                            {{ form_row(form.userEmail) }}
+                        </div>
+
+                        <div class="col-md-6">
+                            {{ form_row(form.plainPassword) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-step d-none" data-step="3" data-title="Adres rozliczeniowy">
+                    <h2 class="h5 mb-3">Adres rozliczeniowy</h2>
+
+                    <div class="row g-3">
+                        <div class="col-md-7">
+                            {{ form_row(form.billingStreet) }}
+                        </div>
+
+                        <div class="col-md-3">
+                            {{ form_row(form.billingBuildingNumber) }}
+                        </div>
+
+                        <div class="col-md-2">
+                            {{ form_row(form.billingApartmentNumber) }}
+                        </div>
+
+                        <div class="col-md-4">
+                            {{ form_row(form.billingPostalCode) }}
+                        </div>
+
+                        <div class="col-md-5">
+                            {{ form_row(form.billingCity) }}
+                        </div>
+
+                        <div class="col-md-3">
+                            {{ form_row(form.billingCountry) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-step d-none" data-step="4" data-title="Adres dostawy">
+                    <h2 class="h5 mb-3">Adres dostawy</h2>
+
+                    <div class="alert alert-light border mb-3">
+                        {{ form_row(form.deliverySameAsBilling) }}
+                    </div>
+
+                    <div id="deliveryAddressFields" class="d-none">
+                        <div class="row g-3">
+                            <div class="col-md-7">
+                                {{ form_row(form.deliveryStreet) }}
+                            </div>
+
+                            <div class="col-md-3">
+                                {{ form_row(form.deliveryBuildingNumber) }}
+                            </div>
+
+                            <div class="col-md-2">
+                                {{ form_row(form.deliveryApartmentNumber) }}
+                            </div>
+
+                            <div class="col-md-4">
+                                {{ form_row(form.deliveryPostalCode) }}
+                            </div>
+
+                            <div class="col-md-5">
+                                {{ form_row(form.deliveryCity) }}
+                            </div>
+
+                            <div class="col-md-3">
+                                {{ form_row(form.deliveryCountry) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
+                    <button type="button"
+                            id="prevStepButton"
+                            class="btn btn-outline-secondary"
+                            disabled>
+                        Wstecz
+                    </button>
+
+                    <div class="d-flex gap-2">
+                        <a href="{{ path('app_home') }}" class="btn btn-link text-decoration-none">
+                            Anuluj
+                        </a>
+
+                        <button type="button"
+                                id="nextStepButton"
+                                class="btn btn-primary">
+                            Dalej
+                        </button>
+
+                        <button type="submit"
+                                id="submitButton"
+                                class="btn btn-success d-none">
+                            Wyślij zgłoszenie
+                        </button>
+                    </div>
+                </div>
+
+                {{ form_rest(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const steps = document.querySelectorAll('.form-step');
+        const prevButton = document.getElementById('prevStepButton');
+        const nextButton = document.getElementById('nextStepButton');
+        const submitButton = document.getElementById('submitButton');
+        const progressBar = document.getElementById('formProgress');
+        const currentStepLabel = document.getElementById('currentStepLabel');
+        const stepTitleLabel = document.getElementById('stepTitleLabel');
+
+        const sameAsBillingCheckbox = document.getElementById('client_registration_request_deliverySameAsBilling');
+        const deliveryAddressFields = document.getElementById('deliveryAddressFields');
+
+        let currentStep = 1;
+        const totalSteps = steps.length;
+
+        function showStep(stepNumber) {
+            steps.forEach(function (step) {
+                const isCurrentStep = Number(step.dataset.step) === stepNumber;
+                step.classList.toggle('d-none', !isCurrentStep);
+            });
+
+            const activeStep = document.querySelector('.form-step[data-step="' + stepNumber + '"]');
+            const progress = (stepNumber / totalSteps) * 100;
+
+            currentStepLabel.textContent = stepNumber;
+            stepTitleLabel.textContent = activeStep.dataset.title;
+
+            progressBar.style.width = progress + '%';
+            progressBar.setAttribute('aria-valuenow', progress);
+
+            prevButton.disabled = stepNumber === 1;
+
+            nextButton.classList.toggle('d-none', stepNumber === totalSteps);
+            submitButton.classList.toggle('d-none', stepNumber !== totalSteps);
+        }
+
+        function validateCurrentStep() {
+            const activeStep = document.querySelector('.form-step[data-step="' + currentStep + '"]');
+            const requiredFields = activeStep.querySelectorAll('input[required], select[required], textarea[required]');
+
+            for (const field of requiredFields) {
+                if (!field.checkValidity()) {
+                    field.reportValidity();
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        function toggleDeliveryAddressFields() {
+            if (!sameAsBillingCheckbox || !deliveryAddressFields) {
+                return;
+            }
+
+            deliveryAddressFields.classList.toggle('d-none', sameAsBillingCheckbox.checked);
+        }
+
+        nextButton.addEventListener('click', function () {
+            if (!validateCurrentStep()) {
+                return;
+            }
+
+            if (currentStep < totalSteps) {
+                currentStep++;
+                showStep(currentStep);
+            }
+        });
+
+        prevButton.addEventListener('click', function () {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        });
+
+        if (sameAsBillingCheckbox) {
+            sameAsBillingCheckbox.addEventListener('change', toggleDeliveryAddressFields);
+            toggleDeliveryAddressFields();
+        }
+
+        showStep(currentStep);
+    });
+</script>
+{% endblock %}
