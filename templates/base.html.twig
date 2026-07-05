@@ -27,6 +27,12 @@
                             {{ app.user.userIdentifier }}
                         </span>
 
+                        {% if is_granted('ROLE_CLIENT') %}
+                            <a class="btn btn-outline-light btn-sm" href="{{ path('app_products') }}">
+                                Produkty
+                            </a>
+                        {% endif %}
+
                         {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EMPLOYEE') %}
                             {% if app.request.attributes.get('_route') == 'app_admin' %}
                                 <a class="btn btn-outline-light btn-sm" href="{{ path('app_home') }}">
