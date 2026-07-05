@@ -163,6 +163,11 @@
 </div>
 
 <div class="d-flex justify-content-end gap-2 mt-4">
+    <a href="{{ path('app_admin_customer_company_edit', { id: customerCompany.id }) }}"
+       class="btn btn-primary">
+        Edytuj dane firmy
+    </a>
+
     <form method="post"
           action="{{ path('app_admin_customer_company_toggle_active', { id: customerCompany.id }) }}"
           onsubmit="return confirm('Czy na pewno chcesz zmienić status tej firmy?');">

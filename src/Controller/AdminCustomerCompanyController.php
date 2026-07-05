@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\CustomerCompany;
+use App\Form\CustomerCompanyType;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -48,6 +50,33 @@ final class AdminCustomerCompanyController extends AbstractController
 
         return $this->redirectToRoute('app_admin_customer_company_show', [
             'id' => $customerCompany->getId(),
+        ]);
+    }
+
+    #[Route('/admin/customer-companies/{id}/edit', name: 'app_admin_customer_company_edit')]
+    public function edit(
+        CustomerCompany $customerCompany,
+        Request $request,
+        EntityManagerInterface $entityManager
+    ): Response {
+        $form = $this->createForm(CustomerCompanyType::class, $customerCompany);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $customerCompany->setUpdatedAt(new \DateTimeImmutable());
+
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Dane firmy klienta zostały zaktualizowane.');
+
+            return $this->redirectToRoute('app_admin_customer_company_show', [
+                'id' => $customerCompany->getId(),
+            ]);
+        }
+
+        return $this->render('admin_customer_company/edit.html.twig', [
+            'customerCompany' => $customerCompany,
+            'form' => $form,
         ]);
     }
 }
