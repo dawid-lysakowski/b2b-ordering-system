@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Kategorie produktów{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 mb-1">Kategorie produktów</h1>
+        <p class="text-muted mb-0">
+            Zarządzanie kategoriami wykorzystywanymi w katalogu produktów.
+        </p>
+    </div>
+
+    <div class="d-flex gap-2">
+        <a href="{{ path('app_admin') }}" class="btn btn-outline-secondary">
+            Powrót
+        </a>
+
+        <a href="{{ path('app_admin_category_new') }}" class="btn btn-primary">
+            Dodaj kategorię
+        </a>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        {% if categories is empty %}
+            <div class="alert alert-info mb-0">
+                Brak kategorii produktów.
+            </div>
+        {% else %}
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nazwa</th>
+                            <th>Opis</th>
+                            <th>Status</th>
+                            <th class="text-end">Akcje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for category in categories %}
+                            <tr>
+                                <td>{{ category.id }}</td>
+                                <td>{{ category.name }}</td>
+                                <td>{{ category.description ?: '-' }}</td>
+                                <td>
+                                    {% if category.isActive %}
+                                        <span class="badge bg-success">Aktywna</span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">Nieaktywna</span>
+                                    {% endif %}
+                                </td>
+                                <td class="text-end">
+                                    <a href="{{ path('app_admin_category_edit', { id: category.id }) }}"
+                                       class="btn btn-sm btn-outline-primary">
+                                        Edytuj
+                                    </a>
+
+                                    <form method="post"
+                                          action="{{ path('app_admin_category_toggle_active', { id: category.id }) }}"
+                                          class="d-inline"
+                                          onsubmit="return confirm('Czy na pewno chcesz zmienić status tej kategorii?');">
+                                        {% if category.isActive %}
+                                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                Dezaktywuj
+                                            </button>
+                                        {% else %}
+                                            <button type="submit" class="btn btn-sm btn-success">
+                                                Aktywuj
+                                            </button>
+                                        {% endif %}
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
