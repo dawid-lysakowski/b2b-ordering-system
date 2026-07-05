@@ -1,0 +1,153 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Szczegóły zgłoszenia{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 mb-1">Szczegóły zgłoszenia</h1>
+        <p class="text-muted mb-0">
+            Zgłoszenie rejestracyjne klienta B2B nr {{ registrationRequest.id }}.
+        </p>
+    </div>
+
+    <a href="{{ path('app_admin_registration_requests') }}" class="btn btn-outline-secondary">
+        Powrót
+    </a>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-6">
+        <div class="card shadow-sm h-100">
+            <div class="card-header bg-light">
+                <h2 class="h5 mb-0">Dane firmy</h2>
+            </div>
+
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">Nazwa firmy</dt>
+                    <dd class="col-sm-8">{{ registrationRequest.companyName }}</dd>
+
+                    <dt class="col-sm-4">NIP</dt>
+                    <dd class="col-sm-8">{{ registrationRequest.taxNumber }}</dd>
+
+                    <dt class="col-sm-4">E-mail</dt>
+                    <dd class="col-sm-8">{{ registrationRequest.companyEmail }}</dd>
+
+                    <dt class="col-sm-4">Telefon</dt>
+                    <dd class="col-sm-8">{{ registrationRequest.companyPhone }}</dd>
+
+                    <dt class="col-sm-4">Status</dt>
+                    <dd class="col-sm-8">
+                        <span class="badge bg-warning text-dark">
+                            {{ registrationRequest.status }}
+                        </span>
+                    </dd>
+
+                    <dt class="col-sm-4">Data zgłoszenia</dt>
+                    <dd class="col-sm-8">
+                        {{ registrationRequest.createdAt ? registrationRequest.createdAt|date('d.m.Y H:i') : '-' }}
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card shadow-sm h-100">
+            <div class="card-header bg-light">
+                <h2 class="h5 mb-0">Dane użytkownika</h2>
+            </div>
+
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">Imię</dt>
+                    <dd class="col-sm-8">{{ registrationRequest.userFirstName }}</dd>
+
+                    <dt class="col-sm-4">Nazwisko</dt>
+                    <dd class="col-sm-8">{{ registrationRequest.userLastName }}</dd>
+
+                    <dt class="col-sm-4">E-mail</dt>
+                    <dd class="col-sm-8">{{ registrationRequest.userEmail }}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card shadow-sm h-100">
+            <div class="card-header bg-light">
+                <h2 class="h5 mb-0">Adres rozliczeniowy</h2>
+            </div>
+
+            <div class="card-body">
+                {% set billingAddress = registrationRequest.billingAddressData %}
+
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">Ulica</dt>
+                    <dd class="col-sm-8">{{ billingAddress.street ?? '-' }}</dd>
+
+                    <dt class="col-sm-4">Numer budynku</dt>
+                    <dd class="col-sm-8">{{ billingAddress.buildingNumber ?? '-' }}</dd>
+
+                    <dt class="col-sm-4">Numer lokalu</dt>
+                    <dd class="col-sm-8">{{ billingAddress.apartmentNumber ?: '-' }}</dd>
+
+                    <dt class="col-sm-4">Kod pocztowy</dt>
+                    <dd class="col-sm-8">{{ billingAddress.postalCode ?? '-' }}</dd>
+
+                    <dt class="col-sm-4">Miasto</dt>
+                    <dd class="col-sm-8">{{ billingAddress.city ?? '-' }}</dd>
+
+                    <dt class="col-sm-4">Kraj</dt>
+                    <dd class="col-sm-8">{{ billingAddress.country ?? '-' }}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card shadow-sm h-100">
+            <div class="card-header bg-light">
+                <h2 class="h5 mb-0">Adres dostawy</h2>
+            </div>
+
+            <div class="card-body">
+                {% set deliveryAddress = registrationRequest.deliveryAddressData %}
+
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">Ulica</dt>
+                    <dd class="col-sm-8">{{ deliveryAddress.street ?? '-' }}</dd>
+
+                    <dt class="col-sm-4">Numer budynku</dt>
+                    <dd class="col-sm-8">{{ deliveryAddress.buildingNumber ?? '-' }}</dd>
+
+                    <dt class="col-sm-4">Numer lokalu</dt>
+                    <dd class="col-sm-8">{{ deliveryAddress.apartmentNumber ?: '-' }}</dd>
+
+                    <dt class="col-sm-4">Kod pocztowy</dt>
+                    <dd class="col-sm-8">{{ deliveryAddress.postalCode ?? '-' }}</dd>
+
+                    <dt class="col-sm-4">Miasto</dt>
+                    <dd class="col-sm-8">{{ deliveryAddress.city ?? '-' }}</dd>
+
+                    <dt class="col-sm-4">Kraj</dt>
+                    <dd class="col-sm-8">{{ deliveryAddress.country ?? '-' }}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if registrationRequest.status == 'pending' %}
+    <div class="d-flex justify-content-end gap-2 mt-4">
+        <form method="post"
+              action="{{ path('app_admin_registration_request_reject', { id: registrationRequest.id }) }}"
+              onsubmit="return confirm('Czy na pewno chcesz odrzucić to zgłoszenie?');">
+            <button type="submit" class="btn btn-outline-danger">
+                Odrzuć zgłoszenie
+            </button>
+        </form>
+    </div>
+{% endif %}
+{% endblock %}

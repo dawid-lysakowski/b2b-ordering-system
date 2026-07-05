@@ -3,10 +3,27 @@
 {% block title %}Panel administracyjny{% endblock %}
 
 {% block body %}
-<div class="p-4 border rounded bg-light">
-    <h1 class="h3">Panel administracyjny</h1>
-    <p class="mb-0">
-        Widok testowy dostępny dla administratora systemu.
+<div class="mb-4">
+    <h1 class="h3 mb-1">Panel administracyjny</h1>
+    <p class="text-muted mb-0">
+        Widok dostępny dla administratora oraz pracownika systemu.
     </p>
+</div>
+
+<div class="row g-3">
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h2 class="h5">Zgłoszenia rejestracyjne</h2>
+                <p class="text-muted">
+                    Przeglądaj zgłoszenia nowych klientów B2B oczekujące na weryfikację.
+                </p>
+
+                <a href="{{ path('app_admin_registration_requests') }}" class="btn btn-primary">
+                    Otwórz
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
