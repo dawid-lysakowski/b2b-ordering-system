@@ -97,6 +97,13 @@
                                             {% endif %}
                                         </td>
                                         <td class="text-end">
+                                            <a href="{{ path('app_admin_customer_company_user_edit', {
+                                                companyId: customerCompany.id,
+                                                userId: user.id
+                                            }) }}" class="btn btn-sm btn-outline-primary">
+                                                Edytuj
+                                            </a>
+
                                             <form method="post"
                                                 action="{{ path('app_admin_customer_company_user_toggle_active', {
                                                     companyId: customerCompany.id,

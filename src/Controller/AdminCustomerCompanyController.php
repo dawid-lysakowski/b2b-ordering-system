@@ -7,6 +7,7 @@ use App\Entity\Address;
 use App\Entity\User;
 use App\Form\CustomerCompanyType;
 use App\Form\AddressType;
+use App\Form\CustomerUserType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -163,6 +164,52 @@ final class AdminCustomerCompanyController extends AbstractController
 
         return $this->redirectToRoute('app_admin_customer_company_show', [
             'id' => $customerCompany->getId(),
+        ]);
+    }
+
+    #[Route('/admin/customer-companies/{companyId}/users/{userId}/edit', name: 'app_admin_customer_company_user_edit')]
+    public function editUser(
+        int $companyId,
+        int $userId,
+        EntityManagerInterface $entityManager,
+        Request $request
+    ): Response {
+        $customerCompany = $entityManager
+            ->getRepository(CustomerCompany::class)
+            ->find($companyId);
+
+        if (!$customerCompany) {
+            throw $this->createNotFoundException('Firma klienta nie została znaleziona.');
+        }
+
+        $user = $entityManager
+            ->getRepository(User::class)
+            ->find($userId);
+
+        if (!$user || $user->getCompany()?->getId() !== $customerCompany->getId()) {
+            throw $this->createNotFoundException('Użytkownik nie został znaleziony dla wskazanej firmy.');
+        }
+
+        $form = $this->createForm(CustomerUserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->setUpdatedAt(new \DateTimeImmutable());
+            $customerCompany->setUpdatedAt(new \DateTimeImmutable());
+
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Dane użytkownika klienta zostały zaktualizowane.');
+
+            return $this->redirectToRoute('app_admin_customer_company_show', [
+                'id' => $customerCompany->getId(),
+            ]);
+        }
+
+        return $this->render('admin_customer_company/edit_user.html.twig', [
+            'customerCompany' => $customerCompany,
+            'customerUser' => $user,
+            'form' => $form,
         ]);
     }
 }
