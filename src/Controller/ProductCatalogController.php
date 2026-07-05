@@ -28,4 +28,16 @@ final class ProductCatalogController extends AbstractController
             'products' => $products,
         ]);
     }
+
+    #[Route('/products/{id}', name: 'app_product_show')]
+    public function show(Product $product): Response
+    {
+        if (!$product->isActive() || !$product->getCategory()->isActive()) {
+            throw $this->createNotFoundException('Produkt nie jest dostępny.');
+        }
+
+        return $this->render('product_catalog/show.html.twig', [
+            'product' => $product,
+        ]);
+    }
 }

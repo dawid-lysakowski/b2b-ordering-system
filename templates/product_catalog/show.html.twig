@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 mb-1">{{ product.name }}</h1>
+        <p class="text-muted mb-0">
+            Szczegóły produktu dostępnego w katalogu B2B.
+        </p>
+    </div>
+
+    <a href="{{ path('app_products') }}" class="btn btn-outline-secondary">
+        Powrót do katalogu
+    </a>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="card shadow-sm h-100">
+            <div class="card-header bg-light">
+                <h2 class="h5 mb-0">Informacje o produkcie</h2>
+            </div>
+
+            <div class="card-body">
+                <div class="mb-3">
+                    <span class="badge bg-light text-dark border">
+                        {{ product.category.name }}
+                    </span>
+                </div>
+
+                <dl class="row mb-0">
+                    <dt class="col-sm-3">Nazwa</dt>
+                    <dd class="col-sm-9">{{ product.name }}</dd>
+
+                    <dt class="col-sm-3">SKU</dt>
+                    <dd class="col-sm-9">{{ product.sku }}</dd>
+
+                    <dt class="col-sm-3">Opis</dt>
+                    <dd class="col-sm-9">
+                        {{ product.description ?: 'Brak opisu produktu.' }}
+                    </dd>
+
+                    <dt class="col-sm-3">Jednostka</dt>
+                    <dd class="col-sm-9">{{ product.unit }}</dd>
+
+                    <dt class="col-sm-3">Minimalna ilość</dt>
+                    <dd class="col-sm-9">{{ product.minimumOrderQuantity }}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-header bg-light">
+                <h2 class="h5 mb-0">Cena</h2>
+            </div>
+
+            <div class="card-body">
+                <div class="mb-3">
+                    <div class="text-muted">Cena netto</div>
+                    <div class="h3 mb-0">
+                        {{ product.priceNet|number_format(2, ',', ' ') }} zł
+                    </div>
+                </div>
+
+                <dl class="row mb-0">
+                    <dt class="col-6">VAT</dt>
+                    <dd class="col-6 text-end">{{ product.vatRate }}%</dd>
+
+                    <dt class="col-6">Jednostka</dt>
+                    <dd class="col-6 text-end">{{ product.unit }}</dd>
+
+                    <dt class="col-6">Min. ilość</dt>
+                    <dd class="col-6 text-end">{{ product.minimumOrderQuantity }}</dd>
+                </dl>
+
+                <button class="btn btn-primary w-100 mt-4" disabled>
+                    Dodaj do koszyka
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
