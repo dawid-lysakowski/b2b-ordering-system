@@ -29,4 +29,25 @@ final class AdminCustomerCompanyController extends AbstractController
             'customerCompany' => $customerCompany,
         ]);
     }
+
+    #[Route('/admin/customer-companies/{id}/toggle-active', name: 'app_admin_customer_company_toggle_active', methods: ['POST'])]
+    public function toggleActive(
+        CustomerCompany $customerCompany,
+        EntityManagerInterface $entityManager
+    ): Response {
+        $customerCompany->setIsActive(!$customerCompany->isActive());
+        $customerCompany->setUpdatedAt(new \DateTimeImmutable());
+
+        $entityManager->flush();
+
+        if ($customerCompany->isActive()) {
+            $this->addFlash('success', 'Firma klienta została aktywowana.');
+        } else {
+            $this->addFlash('success', 'Firma klienta została dezaktywowana.');
+        }
+
+        return $this->redirectToRoute('app_admin_customer_company_show', [
+            'id' => $customerCompany->getId(),
+        ]);
+    }
 }
