@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\CustomerCompany;
 use App\Entity\Address;
+use App\Entity\User;
 use App\Form\CustomerCompanyType;
 use App\Form\AddressType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -124,6 +125,44 @@ final class AdminCustomerCompanyController extends AbstractController
             'customerCompany' => $customerCompany,
             'address' => $address,
             'form' => $form,
+        ]);
+    }
+
+    #[Route('/admin/customer-companies/{companyId}/users/{userId}/toggle-active', name: 'app_admin_customer_company_user_toggle_active', methods: ['POST'])]
+    public function toggleUserActive(
+        int $companyId,
+        int $userId,
+        EntityManagerInterface $entityManager
+    ): Response {
+        $customerCompany = $entityManager
+            ->getRepository(CustomerCompany::class)
+            ->find($companyId);
+
+        if (!$customerCompany) {
+            throw $this->createNotFoundException('Firma klienta nie została znaleziona.');
+        }
+
+        $user = $entityManager
+            ->getRepository(User::class)
+            ->find($userId);
+
+        if (!$user || $user->getCompany()?->getId() !== $customerCompany->getId()) {
+            throw $this->createNotFoundException('Użytkownik nie został znaleziony dla wskazanej firmy.');
+        }
+
+        $user->setIsActive(!$user->isActive());
+        $user->setUpdatedAt(new \DateTimeImmutable());
+
+        $entityManager->flush();
+
+        if ($user->isActive()) {
+            $this->addFlash('success', 'Użytkownik klienta został aktywowany.');
+        } else {
+            $this->addFlash('success', 'Użytkownik klienta został dezaktywowany.');
+        }
+
+        return $this->redirectToRoute('app_admin_customer_company_show', [
+            'id' => $customerCompany->getId(),
         ]);
     }
 }

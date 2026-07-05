@@ -80,6 +80,7 @@
                                     <th>Imię i nazwisko</th>
                                     <th>E-mail</th>
                                     <th>Status</th>
+                                    <th class="text-end">Akcje</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -94,6 +95,25 @@
                                             {% else %}
                                                 <span class="badge bg-secondary">Nieaktywny</span>
                                             {% endif %}
+                                        </td>
+                                        <td class="text-end">
+                                            <form method="post"
+                                                action="{{ path('app_admin_customer_company_user_toggle_active', {
+                                                    companyId: customerCompany.id,
+                                                    userId: user.id
+                                                }) }}"
+                                                onsubmit="return confirm('Czy na pewno chcesz zmienić status tego użytkownika?');"
+                                                class="d-inline">
+                                                {% if user.isActive %}
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                        Dezaktywuj
+                                                    </button>
+                                                {% else %}
+                                                    <button type="submit" class="btn btn-sm btn-success">
+                                                        Aktywuj
+                                                    </button>
+                                                {% endif %}
+                                            </form>
                                         </td>
                                     </tr>
                                 {% endfor %}
