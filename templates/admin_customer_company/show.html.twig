@@ -152,6 +152,15 @@
                                         <dt class="col-sm-4">Kraj</dt>
                                         <dd class="col-sm-8">{{ address.country }}</dd>
                                     </dl>
+
+                                    <div class="text-end mt-3">
+                                        <a href="{{ path('app_admin_customer_company_address_edit', {
+                                            companyId: customerCompany.id,
+                                            addressId: address.id
+                                        }) }}" class="btn btn-sm btn-outline-primary">
+                                            Edytuj adres
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         {% endfor %}

@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\CustomerCompany;
+use App\Entity\Address;
 use App\Form\CustomerCompanyType;
+use App\Form\AddressType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -76,6 +78,51 @@ final class AdminCustomerCompanyController extends AbstractController
 
         return $this->render('admin_customer_company/edit.html.twig', [
             'customerCompany' => $customerCompany,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/admin/customer-companies/{companyId}/addresses/{addressId}/edit', name: 'app_admin_customer_company_address_edit')]
+    public function editAddress(
+        int $companyId,
+        int $addressId,
+        EntityManagerInterface $entityManager,
+        Request $request
+    ): Response {
+        $customerCompany = $entityManager
+            ->getRepository(CustomerCompany::class)
+            ->find($companyId);
+
+        if (!$customerCompany) {
+            throw $this->createNotFoundException('Firma klienta nie została znaleziona.');
+        }
+
+        $address = $entityManager
+            ->getRepository(Address::class)
+            ->find($addressId);
+
+        if (!$address || $address->getCompany()?->getId() !== $customerCompany->getId()) {
+            throw $this->createNotFoundException('Adres nie został znaleziony dla wskazanej firmy.');
+        }
+
+        $form = $this->createForm(AddressType::class, $address);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $customerCompany->setUpdatedAt(new \DateTimeImmutable());
+
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Adres firmy został zaktualizowany.');
+
+            return $this->redirectToRoute('app_admin_customer_company_show', [
+                'id' => $customerCompany->getId(),
+            ]);
+        }
+
+        return $this->render('admin_customer_company/edit_address.html.twig', [
+            'customerCompany' => $customerCompany,
+            'address' => $address,
             'form' => $form,
         ]);
     }
