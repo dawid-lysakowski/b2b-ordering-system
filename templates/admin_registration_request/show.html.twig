@@ -142,6 +142,14 @@
 {% if registrationRequest.status == 'pending' %}
     <div class="d-flex justify-content-end gap-2 mt-4">
         <form method="post"
+              action="{{ path('app_admin_registration_request_approve', { id: registrationRequest.id }) }}"
+              onsubmit="return confirm('Czy na pewno chcesz zaakceptować to zgłoszenie?');">
+            <button type="submit" class="btn btn-success">
+                Akceptuj zgłoszenie
+            </button>
+        </form>
+
+        <form method="post"
               action="{{ path('app_admin_registration_request_reject', { id: registrationRequest.id }) }}"
               onsubmit="return confirm('Czy na pewno chcesz odrzucić to zgłoszenie?');">
             <button type="submit" class="btn btn-outline-danger">
