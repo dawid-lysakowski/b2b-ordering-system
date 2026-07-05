@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-xl-7">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="h3 mb-1">{{ title }}</h1>
+                <p class="text-muted mb-0">
+                    Formularz zarządzania produktem w katalogu B2B.
+                </p>
+            </div>
+
+            <a href="{{ path('app_admin_products') }}" class="btn btn-outline-secondary">
+                Powrót
+            </a>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+                {{ form_start(form) }}
+
+                <div class="row g-3">
+                    <div class="col-md-8">
+                        {{ form_row(form.name) }}
+                    </div>
+
+                    <div class="col-md-4">
+                        {{ form_row(form.sku) }}
+                    </div>
+
+                    <div class="col-12">
+                        {{ form_row(form.description) }}
+                    </div>
+
+                    <div class="col-md-4">
+                        {{ form_row(form.priceNet) }}
+                    </div>
+
+                    <div class="col-md-4">
+                        {{ form_row(form.vatRate) }}
+                    </div>
+
+                    <div class="col-md-4">
+                        {{ form_row(form.unit) }}
+                    </div>
+
+                    <div class="col-md-4">
+                        {{ form_row(form.minimumOrderQuantity) }}
+                    </div>
+
+                    <div class="col-md-8">
+                        {{ form_row(form.category) }}
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2 mt-4">
+                    <a href="{{ path('app_admin_products') }}" class="btn btn-outline-secondary">
+                        Anuluj
+                    </a>
+
+                    <button type="submit" class="btn btn-primary">
+                        {{ buttonLabel }}
+                    </button>
+                </div>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

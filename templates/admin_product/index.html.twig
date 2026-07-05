@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produkty{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 mb-1">Produkty</h1>
+        <p class="text-muted mb-0">
+            Zarządzanie produktami dostępnymi w katalogu B2B.
+        </p>
+    </div>
+
+    <div class="d-flex gap-2">
+        <a href="{{ path('app_admin') }}" class="btn btn-outline-secondary">
+            Powrót
+        </a>
+
+        <a href="{{ path('app_admin_product_new') }}" class="btn btn-primary">
+            Dodaj produkt
+        </a>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        {% if products is empty %}
+            <div class="alert alert-info mb-0">
+                Brak produktów w katalogu.
+            </div>
+        {% else %}
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nazwa</th>
+                            <th>SKU</th>
+                            <th>Kategoria</th>
+                            <th>Cena netto</th>
+                            <th>VAT</th>
+                            <th>Jednostka</th>
+                            <th>Min. ilość</th>
+                            <th>Status</th>
+                            <th class="text-end">Akcje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                            <tr>
+                                <td>{{ product.id }}</td>
+                                <td>{{ product.name }}</td>
+                                <td>{{ product.sku }}</td>
+                                <td>{{ product.category ? product.category.name : '-' }}</td>
+                                <td>{{ product.priceNet|number_format(2, ',', ' ') }} zł</td>
+                                <td>{{ product.vatRate }}%</td>
+                                <td>{{ product.unit }}</td>
+                                <td>{{ product.minimumOrderQuantity }}</td>
+                                <td>
+                                    {% if product.isActive %}
+                                        <span class="badge bg-success">Aktywny</span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">Nieaktywny</span>
+                                    {% endif %}
+                                </td>
+                                <td class="text-end">
+                                    <a href="{{ path('app_admin_product_edit', { id: product.id }) }}"
+                                       class="btn btn-sm btn-outline-primary">
+                                        Edytuj
+                                    </a>
+
+                                    <form method="post"
+                                          action="{{ path('app_admin_product_toggle_active', { id: product.id }) }}"
+                                          class="d-inline"
+                                          onsubmit="return confirm('Czy na pewno chcesz zmienić status tego produktu?');">
+                                        {% if product.isActive %}
+                                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                Dezaktywuj
+                                            </button>
+                                        {% else %}
+                                            <button type="submit" class="btn btn-sm btn-success">
+                                                Aktywuj
+                                            </button>
+                                        {% endif %}
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
