@@ -1,0 +1,164 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Szczegóły firmy klienta{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 mb-1">Szczegóły firmy klienta</h1>
+        <p class="text-muted mb-0">
+            Dane firmy B2B oraz powiązani użytkownicy i adresy.
+        </p>
+    </div>
+
+    <a href="{{ path('app_admin_customer_companies') }}" class="btn btn-outline-secondary">
+        Powrót
+    </a>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-6">
+        <div class="card shadow-sm h-100">
+            <div class="card-header bg-light">
+                <h2 class="h5 mb-0">Dane firmy</h2>
+            </div>
+
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">Nazwa firmy</dt>
+                    <dd class="col-sm-8">{{ customerCompany.name }}</dd>
+
+                    <dt class="col-sm-4">NIP</dt>
+                    <dd class="col-sm-8">{{ customerCompany.taxNumber }}</dd>
+
+                    <dt class="col-sm-4">E-mail</dt>
+                    <dd class="col-sm-8">{{ customerCompany.email }}</dd>
+
+                    <dt class="col-sm-4">Telefon</dt>
+                    <dd class="col-sm-8">{{ customerCompany.phone }}</dd>
+
+                    <dt class="col-sm-4">Status</dt>
+                    <dd class="col-sm-8">
+                        {% if customerCompany.isActive %}
+                            <span class="badge bg-success">Aktywna</span>
+                        {% else %}
+                            <span class="badge bg-secondary">Nieaktywna</span>
+                        {% endif %}
+                    </dd>
+
+                    <dt class="col-sm-4">Data utworzenia</dt>
+                    <dd class="col-sm-8">
+                        {{ customerCompany.createdAt ? customerCompany.createdAt|date('d.m.Y H:i') : '-' }}
+                    </dd>
+
+                    <dt class="col-sm-4">Aktualizacja</dt>
+                    <dd class="col-sm-8">
+                        {{ customerCompany.updatedAt ? customerCompany.updatedAt|date('d.m.Y H:i') : '-' }}
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card shadow-sm h-100">
+            <div class="card-header bg-light">
+                <h2 class="h5 mb-0">Użytkownicy firmy</h2>
+            </div>
+
+            <div class="card-body">
+                {% if customerCompany.users is empty %}
+                    <div class="alert alert-info mb-0">
+                        Brak użytkowników przypisanych do tej firmy.
+                    </div>
+                {% else %}
+                    <div class="table-responsive">
+                        <table class="table table-sm align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Imię i nazwisko</th>
+                                    <th>E-mail</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in customerCompany.users %}
+                                    <tr>
+                                        <td>{{ user.id }}</td>
+                                        <td>{{ user.firstName }} {{ user.lastName }}</td>
+                                        <td>{{ user.email }}</td>
+                                        <td>
+                                            {% if user.isActive %}
+                                                <span class="badge bg-success">Aktywny</span>
+                                            {% else %}
+                                                <span class="badge bg-secondary">Nieaktywny</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="card shadow-sm">
+            <div class="card-header bg-light">
+                <h2 class="h5 mb-0">Adresy firmy</h2>
+            </div>
+
+            <div class="card-body">
+                {% if customerCompany.addresses is empty %}
+                    <div class="alert alert-info mb-0">
+                        Brak adresów przypisanych do tej firmy.
+                    </div>
+                {% else %}
+                    <div class="row g-3">
+                        {% for address in customerCompany.addresses %}
+                            <div class="col-md-6">
+                                <div class="border rounded p-3 h-100">
+                                    <h3 class="h6 mb-3">
+                                        {% if address.addressType == 'billing' %}
+                                            Adres rozliczeniowy
+                                        {% elseif address.addressType == 'delivery' %}
+                                            Adres dostawy
+                                        {% elseif address.addressType == 'both' %}
+                                            Adres rozliczeniowy i dostawy
+                                        {% else %}
+                                            Adres
+                                        {% endif %}
+                                    </h3>
+
+                                    <dl class="row mb-0">
+                                        <dt class="col-sm-4">Ulica</dt>
+                                        <dd class="col-sm-8">{{ address.street }}</dd>
+
+                                        <dt class="col-sm-4">Numer budynku</dt>
+                                        <dd class="col-sm-8">{{ address.buildingNumber }}</dd>
+
+                                        <dt class="col-sm-4">Numer lokalu</dt>
+                                        <dd class="col-sm-8">{{ address.apartmentNumber ?: '-' }}</dd>
+
+                                        <dt class="col-sm-4">Kod pocztowy</dt>
+                                        <dd class="col-sm-8">{{ address.postalCode }}</dd>
+
+                                        <dt class="col-sm-4">Miasto</dt>
+                                        <dd class="col-sm-8">{{ address.city }}</dd>
+
+                                        <dt class="col-sm-4">Kraj</dt>
+                                        <dd class="col-sm-8">{{ address.country }}</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
