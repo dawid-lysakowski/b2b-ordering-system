@@ -271,4 +271,34 @@ final class AdminProductController extends AbstractController
 
         $entityManager->flush();
     }
+
+    #[Route('/admin/products/{productId}/images/{imageId}/description', name: 'app_admin_product_image_update_description', methods: ['POST'])]
+    public function updateImageDescription(
+        int $productId,
+        int $imageId,
+        Request $request,
+        EntityManagerInterface $entityManager
+    ): Response {
+        $product = $entityManager->getRepository(Product::class)->find($productId);
+        $image = $entityManager->getRepository(ProductImage::class)->find($imageId);
+
+        if (!$product || !$image || $image->getProduct() !== $product) {
+            return $this->json([
+                'success' => false,
+                'message' => 'Zdjęcie produktu nie zostało znalezione.',
+            ], Response::HTTP_NOT_FOUND);
+        }
+
+        $description = trim((string) $request->request->get('description', ''));
+
+        $image->setDescription($description !== '' ? $description : null);
+        $product->setUpdatedAt(new \DateTimeImmutable());
+
+        $entityManager->flush();
+
+        return $this->json([
+            'success' => true,
+            'description' => $image->getDescription(),
+        ]);
+    }
 }

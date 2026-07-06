@@ -84,93 +84,91 @@
                     <div class="row g-3">
                         {% for image in product.images|sort((a, b) => a.position <=> b.position) %}
                             <div class="col-md-4">
-                                <div class="card h-100 position-relative overflow-hidden">
-                                    <img src="{{ asset('uploads/products/' ~ image.filename) }}"
-                                         class="card-img-top"
-                                         alt="{{ product.name }}"
-                                         style="height: 160px; object-fit: cover;">
+                                <div class="card h-100 overflow-hidden">
+                                    <div class="position-relative">
+                                        <img src="{{ asset('uploads/products/' ~ image.filename) }}"
+                                            class="card-img-top"
+                                            alt="{{ product.name }}"
+                                            style="height: 160px; object-fit: contain;">
 
-                                    <div class="position-absolute bottom-0 end-0 p-2">
-                                        <div class="btn-group shadow-sm" role="group" aria-label="Zarządzanie zdjęciem">
-                                            {% if image.position > 1 %}
-                                                <form method="post"
-                                                    action="{{ path('app_admin_product_image_move', {
-                                                        productId: product.id,
-                                                        imageId: image.id,
-                                                        direction: 'left'
-                                                    }) }}">
-                                                    <button type="submit"
+                                        <div class="position-absolute top-0 end-0 p-2">
+                                            <div class="btn-group shadow-sm" role="group" aria-label="Zarządzanie zdjęciem">
+                                                {% if image.position > 1 %}
+                                                    <form method="post"
+                                                        action="{{ path('app_admin_product_image_move', {
+                                                            productId: product.id,
+                                                            imageId: image.id,
+                                                            direction: 'left'
+                                                        }) }}"
+                                                        class="d-inline">
+                                                        <button type="submit"
+                                                                class="btn btn-light btn-sm border"
+                                                                title="Przesuń w lewo">
+                                                            &lt;
+                                                        </button>
+                                                    </form>
+                                                {% else %}
+                                                    <button type="button"
                                                             class="btn btn-light btn-sm border"
-                                                            title="Przesuń w lewo">
+                                                            title="Zdjęcie jest już pierwsze"
+                                                            disabled>
                                                         &lt;
                                                     </button>
-                                                </form>
-                                            {% else %}
-                                                <button type="button"
-                                                        class="btn btn-light btn-sm border"
-                                                        title="Zdjęcie jest już pierwsze"
-                                                        disabled>
-                                                    &lt;
-                                                </button>
-                                            {% endif %}
+                                                {% endif %}
 
-                                            {% if image.position < product.images|length %}
-                                                <form method="post"
-                                                    action="{{ path('app_admin_product_image_move', {
-                                                        productId: product.id,
-                                                        imageId: image.id,
-                                                        direction: 'right'
-                                                    }) }}">
-                                                    <button type="submit"
+                                                {% if image.position < product.images|length %}
+                                                    <form method="post"
+                                                        action="{{ path('app_admin_product_image_move', {
+                                                            productId: product.id,
+                                                            imageId: image.id,
+                                                            direction: 'right'
+                                                        }) }}"
+                                                        class="d-inline">
+                                                        <button type="submit"
+                                                                class="btn btn-light btn-sm border"
+                                                                title="Przesuń w prawo">
+                                                            &gt;
+                                                        </button>
+                                                    </form>
+                                                {% else %}
+                                                    <button type="button"
                                                             class="btn btn-light btn-sm border"
-                                                            title="Przesuń w prawo">
+                                                            title="Zdjęcie jest już ostatnie"
+                                                            disabled>
                                                         &gt;
                                                     </button>
-                                                </form>
-                                            {% else %}
-                                                <button type="button"
-                                                        class="btn btn-light btn-sm border"
-                                                        title="Zdjęcie jest już ostatnie"
-                                                        disabled>
-                                                    &gt;
-                                                </button>
-                                            {% endif %}
+                                                {% endif %}
 
-                                            <form method="post"
-                                                action="{{ path('app_admin_product_image_delete', {
-                                                    productId: product.id,
-                                                    imageId: image.id
-                                                }) }}"
-                                                onsubmit="return confirm('Czy na pewno chcesz usunąć to zdjęcie?');">
-                                                <button type="submit"
-                                                        class="btn btn-danger btn-sm border"
-                                                        title="Usuń zdjęcie">
-                                                    ×
-                                                </button>
-                                            </form>
+                                                <form method="post"
+                                                    action="{{ path('app_admin_product_image_delete', {
+                                                        productId: product.id,
+                                                        imageId: image.id
+                                                    }) }}"
+                                                    class="d-inline"
+                                                    onsubmit="return confirm('Czy na pewno chcesz usunąć to zdjęcie?');">
+                                                    <button type="submit"
+                                                            class="btn btn-danger btn-sm border"
+                                                            title="Usuń zdjęcie">
+                                                        ×
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-center mb-1">
-                                            <p class="card-text small mb-0">
-                                                Pozycja: {{ image.position }}
-                                            </p>
+                                        <div>
+                                            <textarea name="description"
+                                                    class="form-control form-control-sm product-image-description"
+                                                    rows="2"
+                                                    placeholder="Opis zdjęcia"
+                                                    data-update-url="{{ path('app_admin_product_image_update_description', {
+                                                        productId: product.id,
+                                                        imageId: image.id
+                                                    }) }}">{{ image.description }}</textarea>
 
-                                            {% if image.position == 1 %}
-                                                <span class="badge bg-primary">Główne</span>
-                                            {% endif %}
+                                            <div class="small text-muted mt-1 product-image-description-status"></div>
                                         </div>
-
-                                        {% if image.description %}
-                                            <p class="card-text small text-muted mb-0">
-                                                {{ image.description }}
-                                            </p>
-                                        {% else %}
-                                            <p class="card-text small text-muted mb-0">
-                                                Brak opisu zdjęcia.
-                                            </p>
-                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -181,4 +179,57 @@
         {% endif %}
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.product-image-description').forEach(function (textarea) {
+            let timeoutId = null;
+            const statusElement = textarea
+                .closest('div')
+                .querySelector('.product-image-description-status');
+
+            textarea.addEventListener('input', function () {
+                clearTimeout(timeoutId);
+
+                if (statusElement) {
+                    statusElement.textContent = 'Zapisywanie...';
+                }
+
+                timeoutId = setTimeout(function () {
+                    const formData = new FormData();
+                    formData.append('description', textarea.value);
+
+                    fetch(textarea.dataset.updateUrl, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                        .then(function (response) {
+                            if (!response.ok) {
+                                throw new Error('Request failed');
+                            }
+
+                            return response.json();
+                        })
+                        .then(function (data) {
+                            if (!data.success) {
+                                throw new Error('Save failed');
+                            }
+
+                            if (statusElement) {
+                                statusElement.textContent = 'Zapisano';
+                            }
+                        })
+                        .catch(function () {
+                            if (statusElement) {
+                                statusElement.textContent = 'Nie udało się zapisać opisu';
+                            }
+                        });
+                }, 700);
+            });
+        });
+    });
+</script>
 {% endblock %}
