@@ -18,6 +18,46 @@
 
 <div class="row g-4">
     <div class="col-lg-8">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-light">
+                <h2 class="h5 mb-0">Zdjęcia produktu</h2>
+            </div>
+
+            <div class="card-body">
+                {% if product.images|length > 0 %}
+                    <div class="row g-3">
+                        {% for image in product.images|sort((a, b) => a.position <=> b.position) %}
+                            <div class="col-md-6">
+                                <div class="border rounded p-2 h-100">
+                                    <img src="{{ asset('uploads/products/' ~ image.filename) }}"
+                                         class="img-fluid rounded"
+                                         alt="{{ product.name }}"
+                                         style="width: 100%; height: 260px; object-fit: cover;">
+
+                                    <div class="mt-2">
+                                        {% if image.position == 1 %}
+                                            <span class="badge bg-primary">Zdjęcie główne</span>
+                                        {% endif %}
+
+                                        {% if image.description %}
+                                            <div class="small text-muted mt-1">
+                                                {{ image.description }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="bg-light border rounded d-flex align-items-center justify-content-center"
+                         style="height: 300px;">
+                        <span class="text-muted">Brak zdjęć produktu</span>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
         <div class="card shadow-sm h-100">
             <div class="card-header bg-light">
                 <h2 class="h5 mb-0">Informacje o produkcie</h2>

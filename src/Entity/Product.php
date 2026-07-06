@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -47,6 +49,17 @@ class Product
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
+
+    /**
+     * @var Collection<int, ProductImage>
+     */
+    #[ORM\OneToMany(targetEntity: ProductImage::class, mappedBy: 'product', orphanRemoval: true)]
+    private Collection $images;
+
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -181,6 +194,51 @@ class Product
     public function setUpdatedAt(?\DateTimeImmutable $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ProductImage>
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function getMainImage(): ?ProductImage
+    {
+        if ($this->images->isEmpty()) {
+            return null;
+        }
+
+        $images = $this->images->toArray();
+
+        usort($images, function (ProductImage $a, ProductImage $b): int {
+            return $a->getPosition() <=> $b->getPosition();
+        });
+
+        return $images[0];
+    }
+
+    public function addImage(ProductImage $image): static
+    {
+        if (!$this->images->contains($image)) {
+            $this->images->add($image);
+            $image->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(ProductImage $image): static
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getProduct() === $this) {
+                $image->setProduct(null);
+            }
+        }
 
         return $this;
     }

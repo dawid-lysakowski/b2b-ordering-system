@@ -54,7 +54,49 @@
                     <div class="col-md-8">
                         {{ form_row(form.category) }}
                     </div>
+
+                    <div class="col-12">
+                        {{ form_row(form.imageFiles) }}
+                        <div class="form-text">
+                            Możesz dodać jedno lub kilka zdjęć produktu. Pierwsze zdjęcie w kolejności będzie traktowane jako zdjęcie główne.
+                        </div>
+                    </div>
                 </div>
+
+                {% if product is defined and product.id and product.images|length > 0 %}
+                    <hr class="my-4">
+
+                    <h2 class="h5 mb-3">Aktualne zdjęcia produktu</h2>
+
+                    <div class="row g-3">
+                        {% for image in product.images|sort((a, b) => a.position <=> b.position) %}
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <img src="{{ asset('uploads/products/' ~ image.filename) }}"
+                                         class="card-img-top"
+                                         alt="{{ product.name }}"
+                                         style="height: 140px; object-fit: cover;">
+
+                                    <div class="card-body">
+                                        <p class="card-text small mb-1">
+                                            Pozycja: {{ image.position }}
+                                        </p>
+
+                                        {% if image.description %}
+                                            <p class="card-text small text-muted mb-2">
+                                                {{ image.description }}
+                                            </p>
+                                        {% endif %}
+
+                                        {% if image.position == 1 %}
+                                            <span class="badge bg-primary">Zdjęcie główne</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
 
                 <div class="d-flex justify-content-end gap-2 mt-4">
                     <a href="{{ path('app_admin_products') }}" class="btn btn-outline-secondary">

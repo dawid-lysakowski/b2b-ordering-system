@@ -34,6 +34,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Zdjęcie</th>
                             <th>Nazwa</th>
                             <th>SKU</th>
                             <th>Kategoria</th>
@@ -47,8 +48,25 @@
                     </thead>
                     <tbody>
                         {% for product in products %}
+                            {% set mainImage = product.mainImage %}
+
                             <tr>
                                 <td>{{ product.id }}</td>
+
+                                <td>
+                                    {% if mainImage %}
+                                        <img src="{{ asset('uploads/products/' ~ mainImage.filename) }}"
+                                             alt="{{ product.name }}"
+                                             class="rounded border"
+                                             style="width: 70px; height: 50px; object-fit: cover;">
+                                    {% else %}
+                                        <div class="bg-light border rounded d-flex align-items-center justify-content-center"
+                                             style="width: 70px; height: 50px;">
+                                            <span class="text-muted small">Brak</span>
+                                        </div>
+                                    {% endif %}
+                                </td>
+
                                 <td>{{ product.name }}</td>
                                 <td>{{ product.sku }}</td>
                                 <td>{{ product.category ? product.category.name : '-' }}</td>

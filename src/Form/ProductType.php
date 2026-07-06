@@ -6,6 +6,7 @@ use App\Entity\Category;
 use App\Entity\Product;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\PercentType;
@@ -13,6 +14,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\All;
+use Symfony\Component\Validator\Constraints\File;
 
 class ProductType extends AbstractType
 {
@@ -53,6 +56,28 @@ class ProductType extends AbstractType
                 'class' => Category::class,
                 'choice_label' => 'name',
                 'placeholder' => 'Wybierz kategorię',
+            ])
+            ->add('imageFiles', FileType::class, [
+                'label' => 'Zdjęcia produktu',
+                'mapped' => false,
+                'required' => false,
+                'multiple' => true,
+                'constraints' => [
+                    new All([
+                        new File([
+                            'maxSize' => '5M',
+                            'mimeTypes' => [
+                                'image/jpeg',
+                                'image/png',
+                                'image/webp',
+                            ],
+                            'mimeTypesMessage' => 'Dodaj plik graficzny w formacie JPG, PNG lub WebP.',
+                        ]),
+                    ]),
+                ],
+                'attr' => [
+                    'accept' => 'image/jpeg,image/png,image/webp',
+                ],
             ]);
     }
 

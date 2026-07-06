@@ -19,8 +19,22 @@
 {% else %}
     <div class="row g-4">
         {% for product in products %}
+            {% set mainImage = product.mainImage %}
+
             <div class="col-md-6 col-lg-4">
                 <div class="card shadow-sm h-100">
+                    {% if mainImage %}
+                        <img src="{{ asset('uploads/products/' ~ mainImage.filename) }}"
+                             class="card-img-top"
+                             alt="{{ product.name }}"
+                             style="height: 180px; object-fit: cover;">
+                    {% else %}
+                        <div class="bg-light border-bottom d-flex align-items-center justify-content-center"
+                             style="height: 180px;">
+                            <span class="text-muted">Brak zdjęcia</span>
+                        </div>
+                    {% endif %}
+
                     <div class="card-body d-flex flex-column">
                         <div class="mb-3">
                             <span class="badge bg-light text-dark border">
@@ -63,7 +77,7 @@
                         </div>
 
                         <a href="{{ path('app_product_show', { id: product.id }) }}"
-                        class="btn btn-outline-primary mt-3">
+                           class="btn btn-outline-primary mt-3">
                             Szczegóły
                         </a>
                     </div>
