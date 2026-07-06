@@ -57,46 +57,8 @@
 
                     <div class="col-12">
                         {{ form_row(form.imageFiles) }}
-                        <div class="form-text">
-                            Możesz dodać jedno lub kilka zdjęć produktu. Pierwsze zdjęcie w kolejności będzie traktowane jako zdjęcie główne.
-                        </div>
                     </div>
                 </div>
-
-                {% if product is defined and product.id and product.images|length > 0 %}
-                    <hr class="my-4">
-
-                    <h2 class="h5 mb-3">Aktualne zdjęcia produktu</h2>
-
-                    <div class="row g-3">
-                        {% for image in product.images|sort((a, b) => a.position <=> b.position) %}
-                            <div class="col-md-4">
-                                <div class="card h-100">
-                                    <img src="{{ asset('uploads/products/' ~ image.filename) }}"
-                                         class="card-img-top"
-                                         alt="{{ product.name }}"
-                                         style="height: 140px; object-fit: cover;">
-
-                                    <div class="card-body">
-                                        <p class="card-text small mb-1">
-                                            Pozycja: {{ image.position }}
-                                        </p>
-
-                                        {% if image.description %}
-                                            <p class="card-text small text-muted mb-2">
-                                                {{ image.description }}
-                                            </p>
-                                        {% endif %}
-
-                                        {% if image.position == 1 %}
-                                            <span class="badge bg-primary">Zdjęcie główne</span>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
 
                 <div class="d-flex justify-content-end gap-2 mt-4">
                     <a href="{{ path('app_admin_products') }}" class="btn btn-outline-secondary">
@@ -111,6 +73,112 @@
                 {{ form_end(form) }}
             </div>
         </div>
+
+        {% if product is defined and product.id and product.images|length > 0 %}
+            <div class="card shadow-sm mt-4">
+                <div class="card-header bg-light">
+                    <h2 class="h5 mb-0">Aktualne zdjęcia produktu</h2>
+                </div>
+
+                <div class="card-body">
+                    <div class="row g-3">
+                        {% for image in product.images|sort((a, b) => a.position <=> b.position) %}
+                            <div class="col-md-4">
+                                <div class="card h-100 position-relative overflow-hidden">
+                                    <img src="{{ asset('uploads/products/' ~ image.filename) }}"
+                                         class="card-img-top"
+                                         alt="{{ product.name }}"
+                                         style="height: 160px; object-fit: cover;">
+
+                                    <div class="position-absolute bottom-0 end-0 p-2">
+                                        <div class="btn-group shadow-sm" role="group" aria-label="Zarządzanie zdjęciem">
+                                            {% if image.position > 1 %}
+                                                <form method="post"
+                                                    action="{{ path('app_admin_product_image_move', {
+                                                        productId: product.id,
+                                                        imageId: image.id,
+                                                        direction: 'left'
+                                                    }) }}">
+                                                    <button type="submit"
+                                                            class="btn btn-light btn-sm border"
+                                                            title="Przesuń w lewo">
+                                                        &lt;
+                                                    </button>
+                                                </form>
+                                            {% else %}
+                                                <button type="button"
+                                                        class="btn btn-light btn-sm border"
+                                                        title="Zdjęcie jest już pierwsze"
+                                                        disabled>
+                                                    &lt;
+                                                </button>
+                                            {% endif %}
+
+                                            {% if image.position < product.images|length %}
+                                                <form method="post"
+                                                    action="{{ path('app_admin_product_image_move', {
+                                                        productId: product.id,
+                                                        imageId: image.id,
+                                                        direction: 'right'
+                                                    }) }}">
+                                                    <button type="submit"
+                                                            class="btn btn-light btn-sm border"
+                                                            title="Przesuń w prawo">
+                                                        &gt;
+                                                    </button>
+                                                </form>
+                                            {% else %}
+                                                <button type="button"
+                                                        class="btn btn-light btn-sm border"
+                                                        title="Zdjęcie jest już ostatnie"
+                                                        disabled>
+                                                    &gt;
+                                                </button>
+                                            {% endif %}
+
+                                            <form method="post"
+                                                action="{{ path('app_admin_product_image_delete', {
+                                                    productId: product.id,
+                                                    imageId: image.id
+                                                }) }}"
+                                                onsubmit="return confirm('Czy na pewno chcesz usunąć to zdjęcie?');">
+                                                <button type="submit"
+                                                        class="btn btn-danger btn-sm border"
+                                                        title="Usuń zdjęcie">
+                                                    ×
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <p class="card-text small mb-0">
+                                                Pozycja: {{ image.position }}
+                                            </p>
+
+                                            {% if image.position == 1 %}
+                                                <span class="badge bg-primary">Główne</span>
+                                            {% endif %}
+                                        </div>
+
+                                        {% if image.description %}
+                                            <p class="card-text small text-muted mb-0">
+                                                {{ image.description }}
+                                            </p>
+                                        {% else %}
+                                            <p class="card-text small text-muted mb-0">
+                                                Brak opisu zdjęcia.
+                                            </p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

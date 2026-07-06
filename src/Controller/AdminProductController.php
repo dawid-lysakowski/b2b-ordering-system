@@ -158,4 +158,117 @@ final class AdminProductController extends AbstractController
             $entityManager->persist($productImage);
         }
     }
+
+    #[Route('/admin/products/{productId}/images/{imageId}/move/{direction}', name: 'app_admin_product_image_move', methods: ['POST'])]
+    public function moveImage(
+        int $productId,
+        int $imageId,
+        string $direction,
+        EntityManagerInterface $entityManager
+    ): Response {
+        $product = $entityManager->getRepository(Product::class)->find($productId);
+        $image = $entityManager->getRepository(ProductImage::class)->find($imageId);
+
+        if (!$product || !$image || $image->getProduct() !== $product) {
+            throw $this->createNotFoundException('Zdjęcie produktu nie zostało znalezione.');
+        }
+
+        if (!in_array($direction, ['left', 'right'], true)) {
+            throw $this->createNotFoundException('Nieprawidłowy kierunek przesunięcia.');
+        }
+
+        $images = $product->getImages()->toArray();
+
+        usort($images, function (ProductImage $a, ProductImage $b): int {
+            return $a->getPosition() <=> $b->getPosition();
+        });
+
+        $currentIndex = array_search($image, $images, true);
+
+        if ($currentIndex === false) {
+            throw $this->createNotFoundException('Zdjęcie produktu nie zostało znalezione w kolekcji.');
+        }
+
+        if ($direction === 'left' && $currentIndex > 0) {
+            $previousImage = $images[$currentIndex - 1];
+
+            $currentPosition = $image->getPosition();
+            $image->setPosition($previousImage->getPosition());
+            $previousImage->setPosition($currentPosition);
+        }
+
+        if ($direction === 'right' && $currentIndex < count($images) - 1) {
+            $nextImage = $images[$currentIndex + 1];
+
+            $currentPosition = $image->getPosition();
+            $image->setPosition($nextImage->getPosition());
+            $nextImage->setPosition($currentPosition);
+        }
+
+        $product->setUpdatedAt(new \DateTimeImmutable());
+
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_admin_product_edit', [
+            'id' => $product->getId(),
+        ]);
+    }
+
+    #[Route('/admin/products/{productId}/images/{imageId}/delete', name: 'app_admin_product_image_delete', methods: ['POST'])]
+    public function deleteImage(
+        int $productId,
+        int $imageId,
+        EntityManagerInterface $entityManager
+    ): Response {
+        $product = $entityManager->getRepository(Product::class)->find($productId);
+        $image = $entityManager->getRepository(ProductImage::class)->find($imageId);
+
+        if (!$product || !$image || $image->getProduct() !== $product) {
+            throw $this->createNotFoundException('Zdjęcie produktu nie zostało znalezione.');
+        }
+
+        $filename = $image->getFilename();
+
+        $product->removeImage($image);
+        $product->setUpdatedAt(new \DateTimeImmutable());
+
+        $entityManager->remove($image);
+        $entityManager->flush();
+
+        if ($filename) {
+            $filePath = $this->getParameter('kernel.project_dir') . '/public/uploads/products/' . $filename;
+
+            if (is_file($filePath)) {
+                unlink($filePath);
+            }
+        }
+
+        $this->reorderProductImages($product, $entityManager);
+
+        $this->addFlash('success', 'Zdjęcie produktu zostało usunięte.');
+
+        return $this->redirectToRoute('app_admin_product_edit', [
+            'id' => $product->getId(),
+        ]);
+    }
+
+    private function reorderProductImages(
+        Product $product,
+        EntityManagerInterface $entityManager
+    ): void {
+        $images = $product->getImages()->toArray();
+
+        usort($images, function (ProductImage $a, ProductImage $b): int {
+            return $a->getPosition() <=> $b->getPosition();
+        });
+
+        $position = 1;
+
+        foreach ($images as $image) {
+            $image->setPosition($position);
+            $position++;
+        }
+
+        $entityManager->flush();
+    }
 }
