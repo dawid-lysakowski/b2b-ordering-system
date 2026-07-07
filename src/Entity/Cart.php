@@ -34,6 +34,7 @@ class Cart
     public function __construct()
     {
         $this->items = new ArrayCollection();
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -105,5 +106,36 @@ class Cart
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    public function getTotalNet(): float
+    {
+        $total = 0.0;
+
+        foreach ($this->items as $item) {
+            $total += (float) $item->getUnitPriceNet() * $item->getQuantity();
+        }
+
+        return $total;
+    }
+
+    public function getTotalGross(): float
+    {
+        $total = 0.0;
+
+        foreach ($this->items as $item) {
+            $product = $item->getProduct();
+
+            if (!$product) {
+                continue;
+            }
+
+            $net = (float) $item->getUnitPriceNet() * $item->getQuantity();
+            $vatRate = (float) $product->getVatRate();
+
+            $total += $net * (1 + $vatRate / 100);
+        }
+
+        return $total;
     }
 }

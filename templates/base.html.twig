@@ -31,6 +31,10 @@
                             <a class="btn btn-outline-light btn-sm" href="{{ path('app_products') }}">
                                 Produkty
                             </a>
+
+                            <a class="btn btn-outline-light btn-sm" href="{{ path('app_cart') }}">
+                                Koszyk
+                            </a>
                         {% endif %}
 
                         {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EMPLOYEE') %}

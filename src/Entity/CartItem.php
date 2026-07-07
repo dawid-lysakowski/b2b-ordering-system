@@ -80,4 +80,22 @@ class CartItem
 
         return $this;
     }
+
+    public function getTotalNet(): float
+    {
+        return (float) $this->unitPriceNet * $this->quantity;
+    }
+
+    public function getTotalGross(): float
+    {
+        $product = $this->product;
+
+        if (!$product) {
+            return $this->getTotalNet();
+        }
+
+        $vatRate = (float) $product->getVatRate();
+
+        return $this->getTotalNet() * (1 + $vatRate / 100);
+    }
 }

@@ -1,0 +1,258 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Koszyk{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 mb-1">Koszyk</h1>
+        <p class="text-muted mb-0">
+            Produkty wybrane do zamówienia.
+        </p>
+    </div>
+
+    <a href="{{ path('app_products') }}" class="btn btn-outline-secondary">
+        Wróć do katalogu
+    </a>
+</div>
+
+{% if cart.items|length > 0 %}
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-light d-flex justify-content-between align-items-center">
+            <h2 class="h5 mb-0">Pozycje koszyka</h2>
+
+            <form method="post"
+                  action="{{ path('app_cart_clear') }}"
+                  onsubmit="return confirm('Czy na pewno chcesz wyczyścić cały koszyk?');">
+                <button type="submit" class="btn btn-sm btn-outline-danger">
+                    Wyczyść koszyk
+                </button>
+            </form>
+        </div>
+
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Produkt</th>
+                            <th>SKU</th>
+                            <th class="text-end">Cena netto</th>
+                            <th class="text-end">VAT</th>
+                            <th style="width: 170px;">Ilość</th>
+                            <th class="text-end">Wartość netto</th>
+                            <th class="text-end">Wartość brutto</th>
+                            <th class="text-end">Akcje</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for item in cart.items %}
+                            {% set product = item.product %}
+
+                            <tr>
+                                <td>
+                                    <div class="fw-semibold">
+                                        {{ product.name }}
+                                    </div>
+
+                                    <a href="{{ path('app_product_show', { id: product.id }) }}"
+                                       class="small text-decoration-none">
+                                        Zobacz produkt
+                                    </a>
+                                </td>
+
+                                <td>
+                                    {{ product.sku }}
+                                </td>
+
+                                <td class="text-end">
+                                    {{ item.unitPriceNet|number_format(2, ',', ' ') }} zł
+                                </td>
+
+                                <td class="text-end">
+                                    {{ product.vatRate }}%
+                                </td>
+
+                                <td>
+                                    <input type="number"
+                                        name="quantity"
+                                        class="form-control form-control-sm js-cart-quantity"
+                                        min="{{ product.minimumOrderQuantity }}"
+                                        value="{{ item.quantity }}"
+                                        step="1"
+                                        data-update-url="{{ path('app_cart_item_update', { id: item.id }) }}"
+                                        data-current-value="{{ item.quantity }}"
+                                        data-item-id="{{ item.id }}"
+                                        required>
+
+                                    <div class="small text-muted mt-1">
+                                        Min.: {{ product.minimumOrderQuantity }} {{ product.unit }}
+                                    </div>
+
+                                    <div class="small text-muted mt-1 js-cart-quantity-status" data-status-for="{{ item.id }}"></div>
+                                </td>
+
+                                <td class="text-end" data-item-total-net="{{ item.id }}">
+                                    {{ item.totalNet|number_format(2, ',', ' ') }} zł
+                                </td>
+
+                                <td class="text-end" data-item-total-gross="{{ item.id }}">
+                                    {{ item.totalGross|number_format(2, ',', ' ') }} zł
+                                </td>
+
+                                <td class="text-end">
+                                    <form method="post"
+                                          action="{{ path('app_cart_item_remove', { id: item.id }) }}"
+                                          onsubmit="return confirm('Czy na pewno chcesz usunąć ten produkt z koszyka?');">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            Usuń
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+
+                    <tfoot class="table-light">
+                        <tr>
+                            <th colspan="5" class="text-end">
+                                Razem:
+                            </th>
+
+                            <th class="text-end" data-cart-total-net>
+                                {{ cart.totalNet|number_format(2, ',', ' ') }} zł
+                            </th>
+
+                            <th class="text-end" data-cart-total-gross>
+                                {{ cart.totalGross|number_format(2, ',', ' ') }} zł
+                            </th>
+
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-primary" disabled>
+            Złóż zamówienie
+        </button>
+    </div>
+{% else %}
+    <div class="card shadow-sm">
+        <div class="card-body text-center py-5">
+            <h2 class="h5 mb-2">Koszyk jest pusty</h2>
+            <p class="text-muted mb-4">
+                Dodaj produkty z katalogu, aby rozpocząć składanie zamówienia.
+            </p>
+
+            <a href="{{ path('app_products') }}" class="btn btn-primary">
+                Przejdź do katalogu
+            </a>
+        </div>
+    </div>
+{% endif %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const debounceTimers = {};
+
+        document.querySelectorAll('.js-cart-quantity').forEach(function (input) {
+            input.addEventListener('input', function () {
+                const itemId = input.dataset.itemId;
+
+                if (!itemId) {
+                    return;
+                }
+
+                clearTimeout(debounceTimers[itemId]);
+
+                debounceTimers[itemId] = setTimeout(function () {
+                    updateCartQuantity(input);
+                }, 500);
+            });
+        });
+
+        function updateCartQuantity(input) {
+            const updateUrl = input.dataset.updateUrl;
+            const itemId = input.dataset.itemId;
+            const previousValue = input.dataset.currentValue;
+            const statusElement = document.querySelector('[data-status-for="' + itemId + '"]');
+
+            if (!updateUrl || !itemId) {
+                return;
+            }
+
+            if (statusElement) {
+                statusElement.textContent = 'Zapisywanie...';
+            }
+
+            const formData = new URLSearchParams();
+            formData.append('quantity', input.value);
+
+            fetch(updateUrl, {
+                method: 'POST',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: formData
+            })
+                .then(function (response) {
+                    return response.json().then(function (data) {
+                        if (!response.ok) {
+                            throw data;
+                        }
+
+                        return data;
+                    });
+                })
+                .then(function (data) {
+                    input.dataset.currentValue = data.quantity;
+                    input.value = data.quantity;
+
+                    const itemTotalNet = document.querySelector('[data-item-total-net="' + itemId + '"]');
+                    const itemTotalGross = document.querySelector('[data-item-total-gross="' + itemId + '"]');
+                    const cartTotalNet = document.querySelector('[data-cart-total-net]');
+                    const cartTotalGross = document.querySelector('[data-cart-total-gross]');
+
+                    if (itemTotalNet) {
+                        itemTotalNet.textContent = data.itemTotalNet;
+                    }
+
+                    if (itemTotalGross) {
+                        itemTotalGross.textContent = data.itemTotalGross;
+                    }
+
+                    if (cartTotalNet) {
+                        cartTotalNet.textContent = data.cartTotalNet;
+                    }
+
+                    if (cartTotalGross) {
+                        cartTotalGross.textContent = data.cartTotalGross;
+                    }
+
+                    if (statusElement) {
+                        statusElement.textContent = 'Zapisano';
+                    }
+
+                    setTimeout(function () {
+                        if (statusElement) {
+                            statusElement.textContent = '';
+                        }
+                    }, 1500);
+                })
+                .catch(function (error) {
+                    input.value = previousValue;
+
+                    if (statusElement) {
+                        statusElement.textContent = error.message || 'Nie udało się zapisać zmiany.';
+                    }
+                });
+        }
+    });
+</script>
+{% endblock %}
