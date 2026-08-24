@@ -23,9 +23,9 @@
 
                 <div class="ms-auto d-flex align-items-center gap-2">
                     {% if app.user %}
-                        <span class="navbar-text">
-                            {{ app.user.userIdentifier }}
-                        </span>
+                        <a class="btn btn-outline-light btn-sm" href="{{ path('app_profile') }}">
+                            Mój profil
+                        </a>
 
                         {% if is_granted('ROLE_CLIENT') %}
                             <a class="btn btn-outline-light btn-sm" href="{{ path('app_products') }}">
@@ -41,7 +41,7 @@
                             </a>
                         {% endif %}
 
-                        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EMPLOYEE') %}
+                        {% if is_granted('ROLE_ADMIN') %}
                             {% if app.request.attributes.get('_route') == 'app_admin' %}
                                 <a class="btn btn-outline-light btn-sm" href="{{ path('app_home') }}">
                                     Home
