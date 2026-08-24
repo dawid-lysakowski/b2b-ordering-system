@@ -25,6 +25,7 @@ final class AdminProductController extends AbstractController
         CategoryRepository $categoryRepository
     ): Response {
         $search = trim((string) $request->query->get('search', ''));
+        $sort = $request->query->get('sort', 'name_asc');
 
         $categoryId = $request->query->get('category');
         $category = null;
@@ -44,6 +45,7 @@ final class AdminProductController extends AbstractController
             $category,
             $minPrice,
             $maxPrice,
+            $sort,
             false
         );
 
@@ -54,6 +56,7 @@ final class AdminProductController extends AbstractController
             'selectedCategory' => $category,
             'minPrice' => $minPrice,
             'maxPrice' => $maxPrice,
+            'sort' => $sort,
         ]);
     }
 

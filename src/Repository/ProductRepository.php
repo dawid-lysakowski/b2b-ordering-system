@@ -22,6 +22,7 @@ class ProductRepository extends ServiceEntityRepository
         ?Category $category,
         ?float $minPrice,
         ?float $maxPrice,
+        ?string $sort,
         bool $onlyActive = true
     ): array {
         $qb = $this->createQueryBuilder('p')
@@ -58,10 +59,33 @@ class ProductRepository extends ServiceEntityRepository
                 ->setParameter('maxPrice', $maxPrice);
         }
 
+        switch ($sort) {
+            
+            case 'name_desc':
+                $qb->orderBy('p.name', 'DESC');
+                break;
+
+            case 'price_asc':
+                $qb->orderBy('p.priceNet', 'ASC');
+                break;
+
+            case 'price_desc':
+                $qb->orderBy('p.priceNet', 'DESC');
+                break;
+
+            case 'newest':
+                $qb->orderBy('p.id', 'DESC');
+                break;
+
+            default:
+                $qb->orderBy('p.name', 'ASC');
+                break;
+        }
+
         return $qb
-            ->orderBy('p.name', 'ASC')
             ->getQuery()
             ->getResult();
+        }
     }
 
     //    /**
@@ -88,4 +112,3 @@ class ProductRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
-}
