@@ -129,9 +129,15 @@ final class OrderController extends AbstractController
             throw $this->createAccessDeniedException();
         }
 
+        $company = $user->getCompany();
+
+        if (!$company) {
+            throw $this->createAccessDeniedException();
+        }
+
         return $this->render('order/index.html.twig', [
             'orders' => $orderRepository->findBy(
-                ['client' => $user],
+                ['company' => $company],
                 ['createdAt' => 'DESC']
             ),
         ]);
@@ -149,7 +155,7 @@ final class OrderController extends AbstractController
             throw $this->createAccessDeniedException();
         }
 
-        if ($order->getClient() !== $user) {
+        if ($order->getCompany() !== $user->getCompany()) {
             throw $this->createAccessDeniedException();
         }
 
