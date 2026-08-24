@@ -3,29 +3,54 @@
 namespace App\Controller;
 
 use App\Entity\Product;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\CategoryRepository;
+use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class ProductCatalogController extends AbstractController
 {
     #[Route('/products', name: 'app_products')]
-    public function index(EntityManagerInterface $entityManager): Response
-    {
-        $products = $entityManager
-            ->getRepository(Product::class)
-            ->createQueryBuilder('p')
-            ->join('p.category', 'c')
-            ->andWhere('p.isActive = :active')
-            ->andWhere('c.isActive = :active')
-            ->setParameter('active', true)
-            ->orderBy('p.name', 'ASC')
-            ->getQuery()
-            ->getResult();
+    public function index(
+        Request $request,
+        ProductRepository $productRepository,
+        CategoryRepository $categoryRepository
+    ): Response {
+        $search = trim((string) $request->query->get('search', ''));
+
+        $categoryId = $request->query->get('category');
+        $category = null;
+
+        if ($categoryId) {
+            $category = $categoryRepository->find($categoryId);
+        }
+
+        $minPrice = $request->query->get('minPrice');
+        $maxPrice = $request->query->get('maxPrice');
+
+        $minPrice = is_numeric($minPrice) ? (float) $minPrice : null;
+        $maxPrice = is_numeric($maxPrice) ? (float) $maxPrice : null;
+
+        $products = $productRepository->findFiltered(
+            $search,
+            $category,
+            $minPrice,
+            $maxPrice,
+            true
+        );
 
         return $this->render('product_catalog/index.html.twig', [
             'products' => $products,
+            'categories' => $categoryRepository->findBy(
+                ['isActive' => true],
+                ['name' => 'ASC']
+            ),
+            'search' => $search,
+            'selectedCategory' => $category,
+            'minPrice' => $minPrice,
+            'maxPrice' => $maxPrice,
         ]);
     }
 

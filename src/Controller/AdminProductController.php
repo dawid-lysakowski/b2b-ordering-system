@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Entity\ProductImage;
 use App\Form\ProductType;
+use App\Repository\CategoryRepository;
+use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -17,14 +19,41 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 final class AdminProductController extends AbstractController
 {
     #[Route('/admin/products', name: 'app_admin_products')]
-    public function index(EntityManagerInterface $entityManager): Response
-    {
-        $products = $entityManager
-            ->getRepository(Product::class)
-            ->findBy([], ['id' => 'DESC']);
+    public function index(
+        Request $request,
+        ProductRepository $productRepository,
+        CategoryRepository $categoryRepository
+    ): Response {
+        $search = trim((string) $request->query->get('search', ''));
+
+        $categoryId = $request->query->get('category');
+        $category = null;
+
+        if ($categoryId) {
+            $category = $categoryRepository->find($categoryId);
+        }
+
+        $minPrice = $request->query->get('minPrice');
+        $maxPrice = $request->query->get('maxPrice');
+
+        $minPrice = is_numeric($minPrice) ? (float) $minPrice : null;
+        $maxPrice = is_numeric($maxPrice) ? (float) $maxPrice : null;
+
+        $products = $productRepository->findFiltered(
+            $search,
+            $category,
+            $minPrice,
+            $maxPrice,
+            false
+        );
 
         return $this->render('admin_product/index.html.twig', [
             'products' => $products,
+            'categories' => $categoryRepository->findBy([], ['name' => 'ASC']),
+            'search' => $search,
+            'selectedCategory' => $category,
+            'minPrice' => $minPrice,
+            'maxPrice' => $maxPrice,
         ]);
     }
 

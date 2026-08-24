@@ -12,9 +12,11 @@
     </div>
 </div>
 
+{{ include('product/_filters.html.twig') }}
+
 {% if products is empty %}
     <div class="alert alert-info">
-        Brak dostępnych produktów w katalogu.
+        Nie znaleziono produktów spełniających wybrane kryteria.
     </div>
 {% else %}
     <div class="row g-4">

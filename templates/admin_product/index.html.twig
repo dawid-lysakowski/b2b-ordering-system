@@ -22,11 +22,13 @@
     </div>
 </div>
 
+{{ include('product/_filters.html.twig') }}
+
 <div class="card shadow-sm">
     <div class="card-body">
         {% if products is empty %}
             <div class="alert alert-info mb-0">
-                Brak produktów w katalogu.
+                Nie znaleziono produktów spełniających wybrane kryteria.
             </div>
         {% else %}
             <div class="table-responsive">
