@@ -11,6 +11,12 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: CustomerOrderRepository::class)]
 class CustomerOrder
 {
+    public const STATUS_NEW = 'NEW';
+    public const STATUS_ACCEPTED = 'ACCEPTED';
+    public const STATUS_IN_PROGRESS = 'IN_PROGRESS';
+    public const STATUS_COMPLETED = 'COMPLETED';
+    public const STATUS_CANCELLED = 'CANCELLED';
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -242,5 +248,29 @@ class CustomerOrder
         }
 
         return $this;
+    }
+
+    public function getStatusLabel(): string
+    {
+        return match ($this->status) {
+            self::STATUS_NEW => 'Nowe',
+            self::STATUS_ACCEPTED => 'Przyjęte',
+            self::STATUS_IN_PROGRESS => 'W realizacji',
+            self::STATUS_COMPLETED => 'Zrealizowane',
+            self::STATUS_CANCELLED => 'Anulowane',
+            default => $this->status,
+        };
+    }
+
+    public function getStatusBadgeClass(): string
+    {
+        return match ($this->status) {
+            self::STATUS_NEW => 'bg-primary',
+            self::STATUS_ACCEPTED => 'bg-info',
+            self::STATUS_IN_PROGRESS => 'bg-warning text-dark',
+            self::STATUS_COMPLETED => 'bg-success',
+            self::STATUS_CANCELLED => 'bg-danger',
+            default => 'bg-secondary',
+        };
     }
 }

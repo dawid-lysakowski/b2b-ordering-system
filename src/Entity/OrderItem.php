@@ -128,6 +128,11 @@ class OrderItem
         return $this;
     }
 
+    public function calculateTotalNet(): float
+    {
+        return (float)$this->unitPriceNet * $this->quantity;
+    }
+
     public function getTotalGross(): ?string
     {
         return $this->totalGross;
@@ -138,5 +143,10 @@ class OrderItem
         $this->totalGross = $totalGross;
 
         return $this;
+    }
+
+    public function calculateTotalGross(): float
+    {
+        return $this->calculateTotalNet() * (1 + ((float)$this->vatRate / 100));
     }
 }

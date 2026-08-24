@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Moje zamówienia{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 mb-1">Moje zamówienia</h1>
+        <p class="text-muted mb-0">
+            Historia wszystkich złożonych zamówień.
+        </p>
+    </div>
+
+    <a href="{{ path('app_products') }}" class="btn btn-outline-secondary">
+        Powrót do katalogu
+    </a>
+</div>
+
+{% if orders|length > 0 %}
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Nr zamówienia</th>
+                            <th>Data</th>
+                            <th>Status</th>
+                            <th class="text-end">Netto</th>
+                            <th class="text-end">Brutto</th>
+                            <th class="text-end">Akcje</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for order in orders %}
+                            <tr>
+                                <td>
+                                    <strong>{{ order.orderNumber }}</strong>
+                                </td>
+
+                                <td>
+                                    {{ order.createdAt|date('Y-m-d H:i') }}
+                                </td>
+
+                                <td>
+                                    <span class="badge {{ order.statusBadgeClass }}">
+                                        {{ order.statusLabel }}
+                                    </span>
+                                </td>
+
+                                <td class="text-end">
+                                    {{ order.totalNet|number_format(2, ',', ' ') }} zł
+                                </td>
+
+                                <td class="text-end">
+                                    {{ order.totalGross|number_format(2, ',', ' ') }} zł
+                                </td>
+
+                                <td class="text-end">
+                                    <a href="{{ path('app_order_show', { id: order.id }) }}"
+                                    class="btn btn-sm btn-outline-primary">
+                                        Szczegóły
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="card shadow-sm">
+        <div class="card-body text-center py-5">
+            <h2 class="h5">Brak zamówień</h2>
+
+            <p class="text-muted">
+                Nie złożono jeszcze żadnego zamówienia.
+            </p>
+
+            <a href="{{ path('app_products') }}" class="btn btn-primary">
+                Przejdź do katalogu
+            </a>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

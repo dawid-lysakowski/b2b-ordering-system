@@ -8,6 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: AddressRepository::class)]
 class Address
 {
+    public const TYPE_BILLING = 'billing';
+    public const TYPE_DELIVERY = 'delivery';
+    public const TYPE_BOTH = 'both';
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -125,6 +129,27 @@ class Address
         $this->addressType = $addressType;
 
         return $this;
+    }
+
+    public function getFormattedAddress(): string
+    {
+        $address = sprintf(
+            '%s %s',
+            $this->street,
+            $this->buildingNumber
+        );
+
+        if ($this->apartmentNumber) {
+            $address .= '/' . $this->apartmentNumber;
+        }
+
+        return sprintf(
+            '%s, %s %s, %s',
+            $address,
+            $this->postalCode,
+            $this->city,
+            $this->country
+        );
     }
 
     public function getCompany(): ?CustomerCompany
