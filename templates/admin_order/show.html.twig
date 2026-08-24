@@ -1,0 +1,205 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ order.orderNumber }}{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 mb-1">
+            Zamówienie {{ order.orderNumber }}
+        </h1>
+
+        <p class="text-muted mb-0">
+            Szczegóły złożonego zamówienia.
+        </p>
+    </div>
+
+    <a href="{{ path('app_admin_orders') }}" class="btn btn-outline-secondary">
+        Powrót do zamówień
+    </a>
+</div>
+
+<div class="row g-4">
+
+    <div class="col-lg-8">
+
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-light">
+                <h2 class="h5 mb-0">Informacje o zamówieniu</h2>
+            </div>
+
+            <div class="card-body">
+
+                <dl class="row mb-0">
+
+                    <dt class="col-sm-4">Numer</dt>
+                    <dd class="col-sm-8">{{ order.orderNumber }}</dd>
+
+                    <dt class="col-sm-4">Data złożenia</dt>
+                    <dd class="col-sm-8">
+                        {{ order.createdAt|date('Y-m-d H:i') }}
+                    </dd>
+
+                    <dt class="col-sm-4">Status</dt>
+                    <dd class="col-sm-8">
+                        <span class="badge {{ order.statusBadgeClass }}">
+                            {{ order.statusLabel }}
+                        </span>
+                    </dd>
+
+                    <dt class="col-sm-4">Firma</dt>
+                    <dd class="col-sm-8">
+                        {{ order.companyName }}
+                    </dd>
+
+                    <dt class="col-sm-4">Klient</dt>
+                    <dd class="col-sm-8">
+                        {{ order.client.firstName }} {{ order.client.lastName }}
+                    </dd>
+
+                    <dt class="col-sm-4">Email</dt>
+                    <dd class="col-sm-8">
+                        {{ order.client.email }}
+                    </dd>
+
+                    <dt class="col-sm-4">Adres dostawy</dt>
+                    <dd class="col-sm-8">
+                        {{ order.deliveryAddressSnapshot ?: '-' }}
+                    </dd>
+
+                </dl>
+
+            </div>
+        </div>
+
+        <div class="card shadow-sm">
+
+            <div class="card-header bg-light">
+                <h2 class="h5 mb-0">Pozycje zamówienia</h2>
+            </div>
+
+            <div class="card-body p-0">
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover align-middle mb-0">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Produkt</th>
+                                <th>SKU</th>
+                                <th class="text-end">Cena netto</th>
+                                <th class="text-end">VAT</th>
+                                <th class="text-end">Ilość</th>
+                                <th class="text-end">Netto</th>
+                                <th class="text-end">Brutto</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                        {% for item in order.items %}
+
+                            <tr>
+
+                                <td>{{ item.productName }}</td>
+
+                                <td>{{ item.productSku }}</td>
+
+                                <td class="text-end">
+                                    {{ item.unitPriceNet|number_format(2, ',', ' ') }} zł
+                                </td>
+
+                                <td class="text-end">
+                                    {{ item.vatRate }}%
+                                </td>
+
+                                <td class="text-end">
+                                    {{ item.quantity }}
+                                </td>
+
+                                <td class="text-end">
+                                    {{ item.totalNet|number_format(2, ',', ' ') }} zł
+                                </td>
+
+                                <td class="text-end">
+                                    {{ item.totalGross|number_format(2, ',', ' ') }} zł
+                                </td>
+
+                            </tr>
+
+                        {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+        <div class="card shadow-sm">
+
+            <div class="card-header bg-light">
+                <h2 class="h5 mb-0">Zarządzanie zamówieniem</h2>
+            </div>
+
+            <div class="card-body">
+
+                <form method="post" action="{{ path('app_admin_order_status', { id: order.id }) }}">
+
+                    <div class="mb-3">
+                        <label class="form-label">Status</label>
+
+                        <select name="status" class="form-select">
+
+                            <option value="{{ constant('App\\Entity\\CustomerOrder::STATUS_NEW') }}"
+                                {% if order.status == constant('App\\Entity\\CustomerOrder::STATUS_NEW') %}selected{% endif %}>
+                                Nowe
+                            </option>
+
+                            <option value="{{ constant('App\\Entity\\CustomerOrder::STATUS_ACCEPTED') }}"
+                                {% if order.status == constant('App\\Entity\\CustomerOrder::STATUS_ACCEPTED') %}selected{% endif %}>
+                                Przyjęte
+                            </option>
+
+                            <option value="{{ constant('App\\Entity\\CustomerOrder::STATUS_IN_PROGRESS') }}"
+                                {% if order.status == constant('App\\Entity\\CustomerOrder::STATUS_IN_PROGRESS') %}selected{% endif %}>
+                                W realizacji
+                            </option>
+
+                            <option value="{{ constant('App\\Entity\\CustomerOrder::STATUS_COMPLETED') }}"
+                                {% if order.status == constant('App\\Entity\\CustomerOrder::STATUS_COMPLETED') %}selected{% endif %}>
+                                Zrealizowane
+                            </option>
+
+                            <option value="{{ constant('App\\Entity\\CustomerOrder::STATUS_CANCELLED') }}"
+                                {% if order.status == constant('App\\Entity\\CustomerOrder::STATUS_CANCELLED') %}selected{% endif %}>
+                                Anulowane
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">
+                        Zapisz status
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
