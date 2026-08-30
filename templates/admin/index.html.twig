@@ -6,15 +6,17 @@
 <div class="mb-4">
     <h1 class="h3 mb-1">Panel administracyjny</h1>
     <p class="text-muted mb-0">
-        Widok dostępny dla administratora oraz pracownika systemu.
+        Widok dostępny dla administratora systemu.
     </p>
 </div>
 
 <div class="row g-3">
+
     <div class="col-md-6 col-lg-4">
         <div class="card shadow-sm h-100">
             <div class="card-body">
                 <h2 class="h5">Zgłoszenia rejestracyjne</h2>
+
                 <p class="text-muted">
                     Przeglądaj zgłoszenia nowych klientów B2B oczekujące na weryfikację.
                 </p>
@@ -30,6 +32,7 @@
         <div class="card shadow-sm h-100">
             <div class="card-body">
                 <h2 class="h5">Firmy klientów B2B</h2>
+
                 <p class="text-muted">
                     Przeglądaj firmy klientów utworzone po zaakceptowaniu zgłoszeń rejestracyjnych.
                 </p>
@@ -45,6 +48,7 @@
         <div class="card shadow-sm h-100">
             <div class="card-body">
                 <h2 class="h5">Kategorie produktów</h2>
+
                 <p class="text-muted">
                     Dodawaj i edytuj kategorie wykorzystywane w katalogu produktów.
                 </p>
@@ -60,6 +64,7 @@
         <div class="card shadow-sm h-100">
             <div class="card-body">
                 <h2 class="h5">Produkty</h2>
+
                 <p class="text-muted">
                     Dodawaj i edytuj produkty dostępne w katalogu B2B.
                 </p>
@@ -70,5 +75,22 @@
             </div>
         </div>
     </div>
+
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h2 class="h5">Zamówienia</h2>
+
+                <p class="text-muted">
+                    Przeglądaj oraz obsługuj zamówienia składane przez klientów B2B.
+                </p>
+
+                <a href="{{ path('app_admin_orders') }}" class="btn btn-primary">
+                    Otwórz
+                </a>
+            </div>
+        </div>
+    </div>
+
 </div>
 {% endblock %}

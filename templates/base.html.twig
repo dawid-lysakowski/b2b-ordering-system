@@ -23,11 +23,12 @@
 
                 <div class="ms-auto d-flex align-items-center gap-2">
                     {% if app.user %}
-                        <a class="btn btn-outline-light btn-sm" href="{{ path('app_profile') }}">
-                            Mój profil
-                        </a>
 
                         {% if is_granted('ROLE_CLIENT') %}
+                            <a class="btn btn-outline-light btn-sm" href="{{ path('app_profile') }}">
+                                Mój profil
+                            </a>
+                            
                             <a class="btn btn-outline-light btn-sm" href="{{ path('app_products') }}">
                                 Produkty
                             </a>
