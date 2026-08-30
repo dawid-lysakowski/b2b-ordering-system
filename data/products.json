@@ -1,0 +1,1302 @@
+[
+  {
+    "category": "Laptopy",
+    "name": "Lenovo ThinkPad E16 Gen 2 16\"",
+    "sku": "LAP-LEN-001",
+    "description": "Laptop biznesowy Lenovo ThinkPad E16 Gen 2 przeznaczony do codziennej pracy biurowej, obsługi systemów firmowych oraz wideokonferencji. Wyposażony w ekran 16 cali, wygodną klawiaturę i obudowę przystosowaną do intensywnego użytkowania w środowisku korporacyjnym.",
+    "priceNet": "3899.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "lap-len-001.jpg"
+    ]
+  },
+  {
+    "category": "Laptopy",
+    "name": "Dell Latitude 5450 14\"",
+    "sku": "LAP-DELL-002",
+    "description": "Dell Latitude 5450 to kompaktowy laptop klasy biznesowej dla pracowników mobilnych i administracyjnych. Model oferuje dobrą wydajność, rozbudowane opcje zabezpieczeń oraz wygodę pracy w aplikacjach biurowych i systemach ERP.",
+    "priceNet": "4599.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "lap-dell-002.jpg"
+    ]
+  },
+  {
+    "category": "Laptopy",
+    "name": "HP ProBook 450 G10 15,6\"",
+    "sku": "LAP-HP-003",
+    "description": "HP ProBook 450 G10 to uniwersalny laptop dla firm, łączący wydajność z solidną konstrukcją. Sprawdzi się w pracy z dokumentami, arkuszami kalkulacyjnymi, pocztą elektroniczną i narzędziami komunikacji online.",
+    "priceNet": "3499.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "lap-hp-003.jpg"
+    ]
+  },
+  {
+    "category": "Laptopy",
+    "name": "ASUS ExpertBook B1 15,6\"",
+    "sku": "LAP-ASU-004",
+    "description": "ASUS ExpertBook B1 to laptop zaprojektowany z myślą o małych i średnich firmach. Oferuje matową matrycę, komplet podstawowych portów oraz konfigurację odpowiednią do typowych zadań biurowych.",
+    "priceNet": "3199.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "lap-asu-004.jpg"
+    ]
+  },
+  {
+    "category": "Laptopy",
+    "name": "Acer TravelMate P2 15,6\"",
+    "sku": "LAP-ACE-005",
+    "description": "Acer TravelMate P2 to praktyczny laptop służbowy przeznaczony do pracy administracyjnej, edukacyjnej i operacyjnej. Urządzenie zapewnia wygodną obsługę aplikacji biurowych oraz stabilną pracę w środowisku firmowym.",
+    "priceNet": "2999.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "lap-ace-005.jpg"
+    ]
+  },
+  {
+    "category": "Laptopy",
+    "name": "Lenovo ThinkBook 16 G6 16\"",
+    "sku": "LAP-LEN-006",
+    "description": "Lenovo ThinkBook 16 G6 to laptop dla użytkowników biznesowych potrzebujących większej przestrzeni roboczej. Ekran 16 cali ułatwia pracę z arkuszami, raportami i wieloma aplikacjami jednocześnie.",
+    "priceNet": "3799.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "lap-len-006.jpg"
+    ]
+  },
+  {
+    "category": "Laptopy",
+    "name": "Dell Vostro 3520 15,6\"",
+    "sku": "LAP-DELL-007",
+    "description": "Dell Vostro 3520 to ekonomiczny laptop biznesowy dla stanowisk administracyjnych i handlowych. Model dobrze sprawdza się w pracy z dokumentami, systemami sprzedażowymi oraz komunikacją online.",
+    "priceNet": "2699.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "lap-dell-007.jpg"
+    ]
+  },
+  {
+    "category": "Laptopy",
+    "name": "HP EliteBook 840 G10 14\"",
+    "sku": "LAP-HP-008",
+    "description": "HP EliteBook 840 G10 to lekki laptop klasy premium przeznaczony dla kadry zarządzającej i pracowników mobilnych. Oferuje wysoką jakość wykonania, funkcje bezpieczeństwa oraz komfortową pracę w podróży.",
+    "priceNet": "6299.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "lap-hp-008.jpg"
+    ]
+  },
+  {
+    "category": "Laptopy",
+    "name": "Microsoft Surface Laptop 5 13,5\"",
+    "sku": "LAP-MIC-009",
+    "description": "Microsoft Surface Laptop 5 to smukłe urządzenie do pracy biurowej, prezentacji oraz spotkań online. Konstrukcja premium i wysokiej jakości ekran sprawiają, że model dobrze pasuje do zastosowań biznesowych i mobilnych.",
+    "priceNet": "5799.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "lap-mic-009.jpg"
+    ]
+  },
+  {
+    "category": "Laptopy",
+    "name": "ASUS Zenbook 14 OLED",
+    "sku": "LAP-ASU-010",
+    "description": "ASUS Zenbook 14 OLED to lekki laptop z wysokiej jakości ekranem, przeznaczony dla użytkowników wymagających mobilności i komfortu pracy. Sprawdzi się przy przygotowywaniu dokumentów, prezentacji oraz pracy z aplikacjami chmurowymi.",
+    "priceNet": "4999.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "lap-asu-010.jpg"
+    ]
+  },
+  {
+    "category": "Laptopy",
+    "name": "Lenovo Yoga 7 14\" 2-in-1",
+    "sku": "LAP-LEN-011",
+    "description": "Lenovo Yoga 7 to konwertowalny laptop 2-in-1 dla użytkowników potrzebujących elastycznego trybu pracy. Dotykowy ekran pozwala wygodnie prowadzić prezentacje, notatki i spotkania z klientami.",
+    "priceNet": "5499.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "lap-len-011.jpg"
+    ]
+  },
+  {
+    "category": "Laptopy",
+    "name": "Dell XPS 13 Plus",
+    "sku": "LAP-DELL-012",
+    "description": "Dell XPS 13 Plus to kompaktowy laptop klasy premium przeznaczony dla użytkowników biznesowych oczekujących wysokiej mobilności. Model wyróżnia się lekką konstrukcją, dobrą jakością ekranu i wysoką kulturą pracy.",
+    "priceNet": "7299.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "lap-dell-012.jpg"
+    ]
+  },
+  {
+    "category": "Laptopy",
+    "name": "HP ZBook Firefly 14 G10",
+    "sku": "LAP-HP-013",
+    "description": "HP ZBook Firefly 14 G10 to mobilna stacja robocza dla działów technicznych, projektowych i analitycznych. Zapewnia wyższą wydajność niż typowy laptop biurowy przy zachowaniu kompaktowej formy.",
+    "priceNet": "7899.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "lap-hp-013.jpg"
+    ]
+  },
+  {
+    "category": "Laptopy",
+    "name": "Apple MacBook Air 13 M2",
+    "sku": "LAP-APP-014",
+    "description": "Apple MacBook Air 13 z układem M2 to lekki laptop przeznaczony dla użytkowników pracujących w ekosystemie Apple. Model zapewnia długi czas pracy na baterii, cichą pracę i wysoką jakość wykonania.",
+    "priceNet": "5199.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "lap-app-014.jpg"
+    ]
+  },
+  {
+    "category": "Laptopy",
+    "name": "MSI Modern 15 15,6\"",
+    "sku": "LAP-MSI-015",
+    "description": "MSI Modern 15 to laptop do pracy biurowej, edukacyjnej i administracyjnej. Urządzenie oferuje nowoczesny wygląd, wygodną klawiaturę i konfigurację wystarczającą do codziennych zadań biznesowych.",
+    "priceNet": "2899.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "lap-msi-015.jpg"
+    ]
+  },
+  {
+    "category": "Monitory",
+    "name": "Dell P2425H 24\" IPS Full HD",
+    "sku": "MON-DELL-001",
+    "description": "Monitor Dell P2425H został zaprojektowany z myślą o pracy biurowej oraz zastosowaniach biznesowych. Matryca IPS o przekątnej 24 cali zapewnia dobre kąty widzenia i czytelny obraz w rozdzielczości Full HD.",
+    "priceNet": "899.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "mon-dell-001.jpg"
+    ]
+  },
+  {
+    "category": "Monitory",
+    "name": "LG 27BA550-B 27\" IPS Full HD",
+    "sku": "MON-LG-002",
+    "description": "LG 27BA550-B to 27-calowy monitor biznesowy przeznaczony do codziennej pracy z dokumentami, arkuszami kalkulacyjnymi oraz aplikacjami biurowymi. Panel IPS zapewnia stabilne odwzorowanie kolorów oraz komfortową pracę pod różnymi kątami.",
+    "priceNet": "1049.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "mon-lg-002.jpg"
+    ]
+  },
+  {
+    "category": "Monitory",
+    "name": "Samsung ViewFinity S6 27\" QHD",
+    "sku": "MON-SAM-003",
+    "description": "Samsung ViewFinity S6 to monitor o rozdzielczości QHD, który sprawdzi się w środowisku biurowym, analitycznym i projektowym. Wyższa rozdzielczość zapewnia większą przestrzeń roboczą.",
+    "priceNet": "1499.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "mon-sam-003.jpg"
+    ]
+  },
+  {
+    "category": "Monitory",
+    "name": "ASUS VA24EQSB 24\" IPS Full HD",
+    "sku": "MON-ASU-004",
+    "description": "ASUS VA24EQSB to monitor biurowy z matrycą IPS i rozdzielczością Full HD. Urządzenie oferuje funkcje zwiększające komfort pracy przy dłuższym użytkowaniu oraz regulowaną podstawę.",
+    "priceNet": "739.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "mon-asu-004.jpg"
+    ]
+  },
+  {
+    "category": "Monitory",
+    "name": "Lenovo ThinkVision T24i-30 24\" IPS",
+    "sku": "MON-LEN-005",
+    "description": "Lenovo ThinkVision T24i-30 to solidny monitor biznesowy przeznaczony do stanowisk administracyjnych i operacyjnych. Ekran IPS o przekątnej 24 cali zapewnia czytelny obraz oraz stabilne kolory.",
+    "priceNet": "849.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "mon-len-005.jpg"
+    ]
+  },
+  {
+    "category": "Monitory",
+    "name": "Philips 243B1JH 24\" USB-C",
+    "sku": "MON-PHI-006",
+    "description": "Philips 243B1JH to monitor biznesowy z obsługą USB-C, ułatwiający podłączenie laptopa jednym przewodem. Model sprawdzi się w nowoczesnych biurach, w których ważna jest wygoda pracy.",
+    "priceNet": "1399.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "mon-phi-006.jpg"
+    ]
+  },
+  {
+    "category": "Monitory",
+    "name": "AOC Q27P3CW 27\" QHD USB-C",
+    "sku": "MON-AOC-007",
+    "description": "AOC Q27P3CW to 27-calowy monitor QHD przeznaczony dla użytkowników wymagających większej przestrzeni roboczej. Złącze USB-C pozwala wygodnie podłączać laptopy służbowe.",
+    "priceNet": "1699.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "mon-aoc-007.jpg"
+    ]
+  },
+  {
+    "category": "Monitory",
+    "name": "iiyama ProLite XUB2492HSU-B5 24\" IPS",
+    "sku": "MON-IIY-008",
+    "description": "iiyama ProLite XUB2492HSU-B5 to uniwersalny monitor biurowy z matrycą IPS i zintegrowanym hubem USB. Model zapewnia komfortową pracę przy dokumentach, poczcie elektronicznej oraz systemach ERP i CRM.",
+    "priceNet": "799.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "mon-iiy-008.jpg"
+    ]
+  },
+  {
+    "category": "Monitory",
+    "name": "BenQ BL2790QT 27\" QHD USB-C",
+    "sku": "MON-BEN-009",
+    "description": "BenQ BL2790QT to monitor QHD z funkcjami wspierającymi ergonomię i komfort pracy. Ekran o przekątnej 27 cali zapewnia większą przestrzeń roboczą, przydatną w pracy analitycznej i administracyjnej.",
+    "priceNet": "1799.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "mon-ben-009.jpg"
+    ]
+  },
+  {
+    "category": "Monitory",
+    "name": "MSI Modern MD272QXP 27\" QHD",
+    "sku": "MON-MSI-010",
+    "description": "MSI Modern MD272QXP to monitor przeznaczony do pracy biurowej, obsługi systemów biznesowych i wielozadaniowości. Rozdzielczość QHD pozwala wygodnie pracować z wieloma oknami jednocześnie.",
+    "priceNet": "1299.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "mon-msi-010.jpg"
+    ]
+  },
+  {
+    "category": "Monitory",
+    "name": "HP E24 G5 24\" IPS Full HD",
+    "sku": "MON-HP-011",
+    "description": "HP E24 G5 to 24-calowy monitor klasy biznesowej, przeznaczony do codziennej pracy w biurze. Matryca IPS zapewnia czytelny obraz i dobrą jakość kolorów podczas pracy z dokumentami.",
+    "priceNet": "929.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "mon-hp-011.jpg"
+    ]
+  },
+  {
+    "category": "Monitory",
+    "name": "Dell U2724D 27\" QHD UltraSharp",
+    "sku": "MON-DELL-012",
+    "description": "Dell U2724D z serii UltraSharp to monitor przeznaczony dla użytkowników wymagających wysokiej jakości obrazu i precyzyjnego odwzorowania kolorów. Model sprawdzi się w działach projektowych, finansowych i administracyjnych.",
+    "priceNet": "2249.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "mon-dell-012.jpg"
+    ]
+  },
+  {
+    "category": "Monitory",
+    "name": "Samsung Essential S3 24\" Full HD",
+    "sku": "MON-SAM-013",
+    "description": "Samsung Essential S3 to podstawowy monitor biurowy przeznaczony do codziennej pracy z dokumentami i aplikacjami internetowymi. To ekonomiczne rozwiązanie dla firm wyposażających większą liczbę stanowisk pracy.",
+    "priceNet": "599.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "mon-sam-013.jpg"
+    ]
+  },
+  {
+    "category": "Monitory",
+    "name": "LG UltraWide 29WQ600-W 29\"",
+    "sku": "MON-LG-014",
+    "description": "LG UltraWide 29WQ600-W to monitor panoramiczny, który zwiększa przestrzeń roboczą bez konieczności stosowania dwóch ekranów. Format obrazu 21:9 dobrze sprawdza się przy pracy z arkuszami kalkulacyjnymi i systemami analitycznymi.",
+    "priceNet": "1199.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "mon-lg-014.jpg"
+    ]
+  },
+  {
+    "category": "Monitory",
+    "name": "AOC U27P2CA 27\" 4K USB-C",
+    "sku": "MON-AOC-015",
+    "description": "AOC U27P2CA to 27-calowy monitor 4K przeznaczony do pracy wymagającej wysokiej szczegółowości obrazu. Rozdzielczość UHD pozwala wygodnie pracować z dużą ilością danych i dokumentacją techniczną.",
+    "priceNet": "2399.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "mon-aoc-015.jpg"
+    ]
+  },
+  {
+    "category": "Klawiatury",
+    "name": "Logitech MX Keys Business",
+    "sku": "KLA-LOG-001",
+    "description": "Logitech MX Keys Business to klawiatura bezprzewodowa przeznaczona do intensywnej pracy biurowej. Niski profil klawiszy, stabilna konstrukcja i możliwość pracy z wieloma urządzeniami sprawiają, że dobrze sprawdza się na stanowiskach specjalistycznych.",
+    "priceNet": "449.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 2,
+    "images": [
+      "kla-log-001.jpg"
+    ]
+  },
+  {
+    "category": "Klawiatury",
+    "name": "Dell KB522 Business Multimedia",
+    "sku": "KLA-DELL-002",
+    "description": "Dell KB522 to przewodowa klawiatura multimedialna przeznaczona do codziennego użytku biurowego. Model oferuje pełnowymiarowy układ klawiszy, dodatkowe przyciski funkcyjne oraz stabilną pracę przez USB.",
+    "priceNet": "129.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 5,
+    "images": [
+      "kla-dell-002.jpg"
+    ]
+  },
+  {
+    "category": "Klawiatury",
+    "name": "HP 455 Programmable Wireless Keyboard",
+    "sku": "KLA-HP-003",
+    "description": "HP 455 to bezprzewodowa klawiatura biznesowa z programowalnymi klawiszami funkcyjnymi. Sprawdzi się w biurach, w których ważna jest wygoda pracy i ograniczenie liczby przewodów na stanowisku.",
+    "priceNet": "189.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 3,
+    "images": [
+      "kla-hp-003.jpg"
+    ]
+  },
+  {
+    "category": "Klawiatury",
+    "name": "Microsoft Surface Keyboard",
+    "sku": "KLA-MIC-004",
+    "description": "Microsoft Surface Keyboard to elegancka klawiatura bezprzewodowa przeznaczona do stanowisk premium. Aluminiowa konstrukcja i cicha praca klawiszy sprawiają, że dobrze pasuje do sal konferencyjnych oraz stanowisk menedżerskich.",
+    "priceNet": "399.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "kla-mic-004.jpg"
+    ]
+  },
+  {
+    "category": "Klawiatury",
+    "name": "Lenovo Preferred Pro II USB",
+    "sku": "KLA-LEN-005",
+    "description": "Lenovo Preferred Pro II to pełnowymiarowa klawiatura przewodowa dla stanowisk biurowych i administracyjnych. Konstrukcja jest prosta, trwała i przystosowana do codziennego użytkowania w środowisku firmowym.",
+    "priceNet": "99.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 5,
+    "images": [
+      "kla-len-005.jpg"
+    ]
+  },
+  {
+    "category": "Klawiatury",
+    "name": "Logitech Signature K650",
+    "sku": "KLA-LOG-006",
+    "description": "Logitech Signature K650 to wygodna klawiatura bezprzewodowa przeznaczona do pracy biurowej. Model oferuje podpórkę pod nadgarstki, ciche klawisze oraz funkcje przydatne podczas codziennej pracy z dokumentami.",
+    "priceNet": "219.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 2,
+    "images": [
+      "kla-log-006.jpg"
+    ]
+  },
+  {
+    "category": "Klawiatury",
+    "name": "Cherry KC 6000 Slim",
+    "sku": "KLA-CHE-007",
+    "description": "Cherry KC 6000 Slim to przewodowa klawiatura o niskim profilu, przeznaczona do nowoczesnych stanowisk biurowych. Aluminiowe wykończenie i stabilny mechanizm klawiszy zapewniają komfortową pracę przez wiele godzin.",
+    "priceNet": "249.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 2,
+    "images": [
+      "kla-che-007.jpg"
+    ]
+  },
+  {
+    "category": "Klawiatury",
+    "name": "Dell Premier Collaboration KB900",
+    "sku": "KLA-DELL-008",
+    "description": "Dell Premier Collaboration KB900 to klawiatura bezprzewodowa z funkcjami współpracy online. Zintegrowane przyciski do obsługi spotkań ułatwiają pracę w środowisku hybrydowym i podczas wideokonferencji.",
+    "priceNet": "599.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "kla-dell-008.jpg"
+    ]
+  },
+  {
+    "category": "Klawiatury",
+    "name": "HP 975 Dual-Mode Wireless Keyboard",
+    "sku": "KLA-HP-009",
+    "description": "HP 975 to zaawansowana klawiatura bezprzewodowa dla użytkowników wymagających wygody i elastyczności. Obsługa wielu urządzeń oraz programowalne klawisze zwiększają efektywność pracy w środowisku biurowym.",
+    "priceNet": "529.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "kla-hp-009.jpg"
+    ]
+  },
+  {
+    "category": "Klawiatury",
+    "name": "Logitech K120 Business",
+    "sku": "KLA-LOG-010",
+    "description": "Logitech K120 Business to prosta i ekonomiczna klawiatura przewodowa do masowego wyposażenia stanowisk pracy. Model zapewnia standardowy układ klawiszy i stabilną pracę w środowisku biurowym.",
+    "priceNet": "59.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 10,
+    "images": [
+      "kla-log-010.jpg"
+    ]
+  },
+  {
+    "category": "Klawiatury",
+    "name": "Microsoft Wired Keyboard 600",
+    "sku": "KLA-MIC-011",
+    "description": "Microsoft Wired Keyboard 600 to przewodowa klawiatura do codziennej pracy biurowej. Charakteryzuje się prostą konstrukcją, wygodnym układem klawiszy i kompatybilnością z typowymi stanowiskami Windows.",
+    "priceNet": "79.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 5,
+    "images": [
+      "kla-mic-011.jpg"
+    ]
+  },
+  {
+    "category": "Klawiatury",
+    "name": "Lenovo Professional Wireless Keyboard",
+    "sku": "KLA-LEN-012",
+    "description": "Lenovo Professional Wireless Keyboard to klawiatura bezprzewodowa przeznaczona do zastosowań firmowych. Pełnowymiarowy układ i stabilne połączenie sprawiają, że sprawdzi się na stanowiskach biurowych i recepcyjnych.",
+    "priceNet": "199.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 3,
+    "images": [
+      "kla-len-012.jpg"
+    ]
+  },
+  {
+    "category": "Klawiatury",
+    "name": "Logitech Ergo K860",
+    "sku": "KLA-LOG-013",
+    "description": "Logitech Ergo K860 to ergonomiczna klawiatura przeznaczona dla użytkowników spędzających wiele godzin przy komputerze. Zakrzywiony układ klawiszy i podpórka pod nadgarstki wspierają bardziej naturalną pozycję dłoni.",
+    "priceNet": "599.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "kla-log-013.jpg"
+    ]
+  },
+  {
+    "category": "Klawiatury",
+    "name": "Cherry Stream Keyboard",
+    "sku": "KLA-CHE-014",
+    "description": "Cherry Stream Keyboard to cicha i trwała klawiatura przewodowa do biur typu open space. Niski profil klawiszy oraz solidna konstrukcja sprawiają, że jest dobrym wyborem do intensywnej pracy administracyjnej.",
+    "priceNet": "149.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 4,
+    "images": [
+      "kla-che-014.jpg"
+    ]
+  },
+  {
+    "category": "Klawiatury",
+    "name": "Dell KM5221W Keyboard",
+    "sku": "KLA-DELL-015",
+    "description": "Dell KM5221W Keyboard to klawiatura bezprzewodowa wchodząca w skład zestawów biznesowych Dell. Sprawdzi się w biurach, gdzie liczy się porządek na stanowisku oraz wygodna obsługa podstawowych aplikacji.",
+    "priceNet": "169.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 3,
+    "images": [
+      "kla-dell-015.jpg"
+    ]
+  },
+  {
+    "category": "Myszy",
+    "name": "Logitech MX Master 3S Business",
+    "sku": "MYS-LOG-001",
+    "description": "Logitech MX Master 3S Business to zaawansowana mysz bezprzewodowa dla użytkowników pracujących z wieloma aplikacjami. Precyzyjny sensor, ciche przyciski i ergonomiczny kształt zwiększają komfort pracy biurowej.",
+    "priceNet": "429.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "mys-log-001.jpg"
+    ]
+  },
+  {
+    "category": "Myszy",
+    "name": "Dell MS116 Optical Mouse",
+    "sku": "MYS-DELL-002",
+    "description": "Dell MS116 to prosta mysz przewodowa przeznaczona do stanowisk biurowych. Sprawdzi się przy masowym wyposażaniu miejsc pracy, zapewniając niezawodne działanie i podstawową ergonomię.",
+    "priceNet": "39.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 10,
+    "images": [
+      "mys-dell-002.jpg"
+    ]
+  },
+  {
+    "category": "Myszy",
+    "name": "HP 435 Multi-Device Wireless Mouse",
+    "sku": "MYS-HP-003",
+    "description": "HP 435 to bezprzewodowa mysz umożliwiająca pracę z kilkoma urządzeniami. Jest dobrym wyborem dla użytkowników korzystających jednocześnie z laptopa, stacji dokującej i urządzeń mobilnych.",
+    "priceNet": "149.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 3,
+    "images": [
+      "mys-hp-003.jpg"
+    ]
+  },
+  {
+    "category": "Myszy",
+    "name": "Microsoft Bluetooth Mouse",
+    "sku": "MYS-MIC-004",
+    "description": "Microsoft Bluetooth Mouse to kompaktowa mysz bezprzewodowa do codziennej pracy mobilnej i biurowej. Prosta obsługa Bluetooth pozwala ograniczyć wykorzystanie portów USB w laptopie.",
+    "priceNet": "99.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 5,
+    "images": [
+      "mys-mic-004.jpg"
+    ]
+  },
+  {
+    "category": "Myszy",
+    "name": "Lenovo Essential USB Mouse",
+    "sku": "MYS-LEN-005",
+    "description": "Lenovo Essential USB Mouse to podstawowa mysz przewodowa do standardowych stanowisk komputerowych. Model jest prosty, trwały i odpowiedni do codziennego użytkowania w organizacji.",
+    "priceNet": "35.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 10,
+    "images": [
+      "mys-len-005.jpg"
+    ]
+  },
+  {
+    "category": "Myszy",
+    "name": "Logitech Signature M650",
+    "sku": "MYS-LOG-006",
+    "description": "Logitech Signature M650 to bezprzewodowa mysz biurowa z cichymi przyciskami i wygodnym profilem. Sprawdzi się w biurach typu open space oraz w pracy hybrydowej.",
+    "priceNet": "159.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 3,
+    "images": [
+      "mys-log-006.jpg"
+    ]
+  },
+  {
+    "category": "Myszy",
+    "name": "Dell Premier Rechargeable MS900",
+    "sku": "MYS-DELL-007",
+    "description": "Dell Premier Rechargeable MS900 to mysz klasy premium z akumulatorem i precyzyjnym sensorem. Model przeznaczony jest dla użytkowników biznesowych oczekujących wygody, stabilności i długiego czasu pracy.",
+    "priceNet": "499.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "mys-dell-007.jpg"
+    ]
+  },
+  {
+    "category": "Myszy",
+    "name": "HP 930 Creator Wireless Mouse",
+    "sku": "MYS-HP-008",
+    "description": "HP 930 Creator Wireless Mouse to mysz dla użytkowników pracujących z aplikacjami kreatywnymi, arkuszami i narzędziami analitycznymi. Programowalne przyciski i precyzyjna praca zwiększają efektywność codziennych zadań.",
+    "priceNet": "349.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "mys-hp-008.jpg"
+    ]
+  },
+  {
+    "category": "Myszy",
+    "name": "Logitech B100 Optical USB",
+    "sku": "MYS-LOG-009",
+    "description": "Logitech B100 to ekonomiczna mysz przewodowa do wyposażenia większej liczby stanowisk. Zapewnia podstawową funkcjonalność, prostą instalację i niezawodne działanie w codziennej pracy.",
+    "priceNet": "29.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 20,
+    "images": [
+      "mys-log-009.jpg"
+    ]
+  },
+  {
+    "category": "Myszy",
+    "name": "Microsoft Ergonomic Mouse",
+    "sku": "MYS-MIC-010",
+    "description": "Microsoft Ergonomic Mouse to przewodowa mysz o profilu wspierającym wygodną pozycję dłoni. Model jest przeznaczony dla użytkowników spędzających wiele godzin przy komputerze.",
+    "priceNet": "179.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 2,
+    "images": [
+      "mys-mic-010.jpg"
+    ]
+  },
+  {
+    "category": "Myszy",
+    "name": "Lenovo Go USB-C Wireless Mouse",
+    "sku": "MYS-LEN-011",
+    "description": "Lenovo Go USB-C Wireless Mouse to kompaktowa mysz bezprzewodowa do pracy mobilnej. Odbiornik USB-C sprawdzi się z nowoczesnymi laptopami biznesowymi i ogranicza potrzebę stosowania adapterów.",
+    "priceNet": "189.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 2,
+    "images": [
+      "mys-len-011.jpg"
+    ]
+  },
+  {
+    "category": "Myszy",
+    "name": "Logitech Lift Vertical Mouse",
+    "sku": "MYS-LOG-012",
+    "description": "Logitech Lift to pionowa mysz ergonomiczna przeznaczona dla użytkowników dbających o komfort pracy. Ułożenie dłoni pod naturalnym kątem zmniejsza napięcie nadgarstka podczas długotrwałego użytkowania.",
+    "priceNet": "279.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "mys-log-012.jpg"
+    ]
+  },
+  {
+    "category": "Myszy",
+    "name": "Cherry MW 4500 Ergonomic",
+    "sku": "MYS-CHE-013",
+    "description": "Cherry MW 4500 to ergonomiczna mysz bezprzewodowa o pionowym profilu. Model sprawdzi się w biurach, gdzie priorytetem jest komfort użytkowników oraz ograniczenie przeciążeń dłoni.",
+    "priceNet": "139.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 3,
+    "images": [
+      "mys-che-013.jpg"
+    ]
+  },
+  {
+    "category": "Myszy",
+    "name": "Dell WM126 Wireless Mouse",
+    "sku": "MYS-DELL-014",
+    "description": "Dell WM126 to niewielka mysz bezprzewodowa do laptopów i stanowisk biurowych. Prosta konstrukcja, stabilne połączenie i kompaktowy rozmiar sprawiają, że jest praktyczna w codziennej pracy.",
+    "priceNet": "79.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 5,
+    "images": [
+      "mys-dell-014.jpg"
+    ]
+  },
+  {
+    "category": "Myszy",
+    "name": "HP 125 Wired Mouse",
+    "sku": "MYS-HP-015",
+    "description": "HP 125 Wired Mouse to podstawowa mysz przewodowa do zastosowań firmowych. Model zapewnia wygodne sterowanie kursorem, prostą instalację i zgodność z typowymi komputerami biurowymi.",
+    "priceNet": "45.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 10,
+    "images": [
+      "mys-hp-015.jpg"
+    ]
+  },
+  {
+    "category": "Drukarki",
+    "name": "HP LaserJet Pro 4002dw",
+    "sku": "DRU-HP-001",
+    "description": "HP LaserJet Pro 4002dw to monochromatyczna drukarka laserowa przeznaczona do małych i średnich biur. Oferuje szybki druk dokumentów, łączność sieciową oraz automatyczny druk dwustronny.",
+    "priceNet": "899.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "dru-hp-001.jpg"
+    ]
+  },
+  {
+    "category": "Drukarki",
+    "name": "Brother HL-L5210DW",
+    "sku": "DRU-BRO-002",
+    "description": "Brother HL-L5210DW to wydajna drukarka laserowa do środowisk biurowych o większym obciążeniu. Model oferuje szybkie wydruki, obsługę sieci bezprzewodowej i wysoką pojemność podajników.",
+    "priceNet": "1199.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "dru-bro-002.jpg"
+    ]
+  },
+  {
+    "category": "Drukarki",
+    "name": "Canon i-SENSYS MF657Cdw",
+    "sku": "DRU-CAN-003",
+    "description": "Canon i-SENSYS MF657Cdw to kolorowe urządzenie wielofunkcyjne dla firm, łączące druk, skanowanie i kopiowanie. Sprawdzi się w działach administracyjnych, sprzedażowych i obsługi klienta.",
+    "priceNet": "1899.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "dru-can-003.jpg"
+    ]
+  },
+  {
+    "category": "Drukarki",
+    "name": "Epson EcoTank L6270",
+    "sku": "DRU-EPS-004",
+    "description": "Epson EcoTank L6270 to atramentowe urządzenie wielofunkcyjne z systemem stałego zasilania w atrament. Model jest przeznaczony dla firm oczekujących niskiego kosztu wydruku przy umiarkowanym obciążeniu.",
+    "priceNet": "1399.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "dru-eps-004.jpg"
+    ]
+  },
+  {
+    "category": "Drukarki",
+    "name": "Xerox B310V_DNI",
+    "sku": "DRU-XER-005",
+    "description": "Xerox B310V_DNI to monochromatyczna drukarka laserowa do szybkiego wydruku dokumentów biznesowych. Kompaktowa konstrukcja i obsługa sieci sprawiają, że dobrze pasuje do zespołów roboczych.",
+    "priceNet": "799.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "dru-xer-005.jpg"
+    ]
+  },
+  {
+    "category": "Drukarki",
+    "name": "HP Color LaserJet Pro MFP 4302fdw",
+    "sku": "DRU-HP-006",
+    "description": "HP Color LaserJet Pro MFP 4302fdw to kolorowe urządzenie wielofunkcyjne do intensywnej pracy biurowej. Oferuje druk, skanowanie, kopiowanie i faksowanie oraz funkcje bezpieczeństwa przydatne w firmach.",
+    "priceNet": "2499.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "dru-hp-006.jpg"
+    ]
+  },
+  {
+    "category": "Drukarki",
+    "name": "Brother MFC-L8690CDW",
+    "sku": "DRU-BRO-007",
+    "description": "Brother MFC-L8690CDW to kolorowe urządzenie wielofunkcyjne laserowe dla biur i zespołów roboczych. Zapewnia szybki druk, automatyczny podajnik dokumentów oraz szerokie możliwości pracy sieciowej.",
+    "priceNet": "2699.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "dru-bro-007.jpg"
+    ]
+  },
+  {
+    "category": "Drukarki",
+    "name": "Canon MAXIFY GX6040",
+    "sku": "DRU-CAN-008",
+    "description": "Canon MAXIFY GX6040 to urządzenie atramentowe dla firm oczekujących niskiego kosztu wydruku i dobrej jakości dokumentów. System butelkowego uzupełniania tuszu sprawdza się przy regularnym drukowaniu większej liczby stron.",
+    "priceNet": "1699.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "dru-can-008.jpg"
+    ]
+  },
+  {
+    "category": "Drukarki",
+    "name": "Epson WorkForce Pro WF-C5890DWF",
+    "sku": "DRU-EPS-009",
+    "description": "Epson WorkForce Pro WF-C5890DWF to biznesowe urządzenie wielofunkcyjne z technologią atramentową. Model łączy wydajność pracy biurowej z niższym zużyciem energii względem wielu urządzeń laserowych.",
+    "priceNet": "2199.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "dru-eps-009.jpg"
+    ]
+  },
+  {
+    "category": "Drukarki",
+    "name": "Xerox VersaLink C405",
+    "sku": "DRU-XER-010",
+    "description": "Xerox VersaLink C405 to kolorowe urządzenie wielofunkcyjne dla firm wymagających wydajnego obiegu dokumentów. Sprawdzi się w działach administracji, obsługi klienta oraz zespołach o większym wolumenie wydruków.",
+    "priceNet": "3299.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "dru-xer-010.jpg"
+    ]
+  },
+  {
+    "category": "Nośniki danych",
+    "name": "Samsung 870 EVO 1TB SATA SSD",
+    "sku": "SSD-SAM-001",
+    "description": "Samsung 870 EVO 1TB to dysk SSD SATA przeznaczony do modernizacji komputerów stacjonarnych i laptopów. Zapewnia znacznie szybszą pracę systemu niż tradycyjne dyski HDD i sprawdza się w zastosowaniach biurowych.",
+    "priceNet": "349.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 2,
+    "images": [
+      "ssd-sam-001.jpg"
+    ]
+  },
+  {
+    "category": "Nośniki danych",
+    "name": "Kingston NV2 1TB NVMe",
+    "sku": "SSD-KIN-002",
+    "description": "Kingston NV2 1TB to dysk NVMe przeznaczony do komputerów i laptopów obsługujących standard M.2. Model oferuje wysoką szybkość odczytu i zapisu, co przyspiesza pracę systemu i aplikacji.",
+    "priceNet": "299.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 2,
+    "images": [
+      "ssd-kin-002.jpg"
+    ]
+  },
+  {
+    "category": "Nośniki danych",
+    "name": "Crucial MX500 500GB SATA SSD",
+    "sku": "SSD-CRU-003",
+    "description": "Crucial MX500 500GB to sprawdzony dysk SSD SATA do modernizacji starszych komputerów biurowych. Jest dobrym wyborem dla firm chcących wydłużyć żywotność istniejącej infrastruktury sprzętowej.",
+    "priceNet": "219.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 3,
+    "images": [
+      "ssd-cru-003.jpg"
+    ]
+  },
+  {
+    "category": "Nośniki danych",
+    "name": "WD Blue SN580 2TB NVMe",
+    "sku": "SSD-WD-004",
+    "description": "WD Blue SN580 2TB to szybki dysk NVMe o dużej pojemności, przeznaczony do komputerów roboczych i laptopów biznesowych. Sprawdzi się przy pracy z większymi plikami, dokumentacją i projektami multimedialnymi.",
+    "priceNet": "699.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "ssd-wd-004.jpg"
+    ]
+  },
+  {
+    "category": "Nośniki danych",
+    "name": "SanDisk Ultra Dual Drive 128GB USB-C",
+    "sku": "SSD-SAN-005",
+    "description": "SanDisk Ultra Dual Drive 128GB to przenośna pamięć USB z interfejsem USB-C i USB-A. Umożliwia szybkie przenoszenie dokumentów między laptopami, komputerami i urządzeniami mobilnymi.",
+    "priceNet": "69.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 10,
+    "images": [
+      "ssd-san-005.jpg"
+    ]
+  },
+  {
+    "category": "Nośniki danych",
+    "name": "Kingston DataTraveler Exodia 64GB",
+    "sku": "SSD-KIN-006",
+    "description": "Kingston DataTraveler Exodia 64GB to podstawowa pamięć USB do codziennego przenoszenia dokumentów firmowych. Model jest prosty, lekki i odpowiedni do masowego wyposażenia pracowników.",
+    "priceNet": "29.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 20,
+    "images": [
+      "ssd-kin-006.jpg"
+    ]
+  },
+  {
+    "category": "Nośniki danych",
+    "name": "Samsung T7 Shield 1TB Portable SSD",
+    "sku": "SSD-SAM-007",
+    "description": "Samsung T7 Shield 1TB to przenośny dysk SSD o wzmocnionej konstrukcji. Sprawdzi się u pracowników mobilnych, działów technicznych i zespołów pracujących z większymi plikami poza biurem.",
+    "priceNet": "499.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "ssd-sam-007.jpg"
+    ]
+  },
+  {
+    "category": "Nośniki danych",
+    "name": "Seagate Expansion Portable 2TB",
+    "sku": "SSD-SEA-008",
+    "description": "Seagate Expansion Portable 2TB to zewnętrzny dysk twardy do archiwizacji danych, kopii roboczych i przenoszenia dużych plików. Model oferuje dużą pojemność przy korzystnej cenie jednostkowej.",
+    "priceNet": "329.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 2,
+    "images": [
+      "ssd-sea-008.jpg"
+    ]
+  },
+  {
+    "category": "Nośniki danych",
+    "name": "WD Elements Desktop 6TB",
+    "sku": "SSD-WD-009",
+    "description": "WD Elements Desktop 6TB to zewnętrzny dysk do przechowywania większych zbiorów danych i lokalnych kopii zapasowych. Sprawdzi się w działach administracyjnych oraz małych biurach potrzebujących dodatkowej przestrzeni.",
+    "priceNet": "699.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "ssd-wd-009.jpg"
+    ]
+  },
+  {
+    "category": "Nośniki danych",
+    "name": "Crucial X9 Pro 1TB Portable SSD",
+    "sku": "SSD-CRU-010",
+    "description": "Crucial X9 Pro 1TB to szybki przenośny dysk SSD do pracy z dokumentami, zdjęciami i projektami multimedialnymi. Kompaktowa obudowa i wysoka wydajność sprawiają, że dobrze sprawdza się w pracy mobilnej.",
+    "priceNet": "459.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "ssd-cru-010.jpg"
+    ]
+  },
+  {
+    "category": "Urządzenia sieciowe",
+    "name": "TP-Link Archer AX55 Wi-Fi 6",
+    "sku": "SIE-TPL-001",
+    "description": "TP-Link Archer AX55 to router Wi-Fi 6 przeznaczony do małych biur i punktów usługowych. Zapewnia szybką łączność bezprzewodową, obsługę wielu urządzeń oraz podstawowe funkcje zarządzania siecią.",
+    "priceNet": "399.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "sie-tpl-001.jpg"
+    ]
+  },
+  {
+    "category": "Urządzenia sieciowe",
+    "name": "Ubiquiti UniFi U6+ Access Point",
+    "sku": "SIE-UBI-002",
+    "description": "Ubiquiti UniFi U6+ to punkt dostępowy Wi-Fi 6 przeznaczony do budowy firmowych sieci bezprzewodowych. Urządzenie sprawdzi się w biurach, salach konferencyjnych i przestrzeniach wspólnych.",
+    "priceNet": "549.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "sie-ubi-002.jpg"
+    ]
+  },
+  {
+    "category": "Urządzenia sieciowe",
+    "name": "Cisco Business CBS110-16T",
+    "sku": "SIE-CIS-003",
+    "description": "Cisco Business CBS110-16T to 16-portowy przełącznik niezarządzalny dla małych firm. Model pozwala szybko rozbudować sieć przewodową bez konieczności zaawansowanej konfiguracji.",
+    "priceNet": "499.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "sie-cis-003.jpg"
+    ]
+  },
+  {
+    "category": "Urządzenia sieciowe",
+    "name": "Netgear GS308E Plus 8-Port",
+    "sku": "SIE-NET-004",
+    "description": "Netgear GS308E Plus to kompaktowy przełącznik zarządzalny dla małych biur. Oferuje podstawowe funkcje konfiguracji, monitorowania ruchu oraz segmentacji sieci.",
+    "priceNet": "229.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 2,
+    "images": [
+      "sie-net-004.jpg"
+    ]
+  },
+  {
+    "category": "Urządzenia sieciowe",
+    "name": "TP-Link TL-SG2428P JetStream PoE",
+    "sku": "SIE-TPL-005",
+    "description": "TP-Link TL-SG2428P to zarządzalny przełącznik PoE przeznaczony do zasilania punktów dostępowych, telefonów IP i kamer. Model sprawdzi się w małych i średnich instalacjach firmowych.",
+    "priceNet": "1399.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "sie-tpl-005.jpg"
+    ]
+  },
+  {
+    "category": "Urządzenia sieciowe",
+    "name": "Ubiquiti UniFi Dream Router",
+    "sku": "SIE-UBI-006",
+    "description": "Ubiquiti UniFi Dream Router to urządzenie łączące funkcje routera, kontrolera UniFi i punktu dostępowego. Jest przeznaczone dla małych biur wymagających prostego zarządzania siecią z jednego panelu.",
+    "priceNet": "999.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "sie-ubi-006.jpg"
+    ]
+  },
+  {
+    "category": "Urządzenia sieciowe",
+    "name": "MikroTik hEX S",
+    "sku": "SIE-MIK-007",
+    "description": "MikroTik hEX S to kompaktowy router przewodowy dla użytkowników wymagających zaawansowanej konfiguracji sieci. Urządzenie sprawdzi się w małych firmach oraz instalacjach technicznych.",
+    "priceNet": "329.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "sie-mik-007.jpg"
+    ]
+  },
+  {
+    "category": "Urządzenia sieciowe",
+    "name": "Cisco Business 150AX Access Point",
+    "sku": "SIE-CIS-008",
+    "description": "Cisco Business 150AX to punkt dostępowy Wi-Fi 6 przeznaczony dla małych firm. Model oferuje stabilną łączność, centralne zarządzanie oraz funkcje bezpieczeństwa przydatne w środowisku biznesowym.",
+    "priceNet": "699.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "sie-cis-008.jpg"
+    ]
+  },
+  {
+    "category": "Urządzenia sieciowe",
+    "name": "D-Link DGS-1210-10P PoE",
+    "sku": "SIE-DLI-009",
+    "description": "D-Link DGS-1210-10P to zarządzalny przełącznik PoE dla małych sieci firmowych. Umożliwia zasilanie urządzeń sieciowych i podstawowe zarządzanie ruchem w sieci lokalnej.",
+    "priceNet": "799.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "sie-dli-009.jpg"
+    ]
+  },
+  {
+    "category": "Urządzenia sieciowe",
+    "name": "TP-Link Deco X50 Mesh Wi-Fi 6",
+    "sku": "SIE-TPL-010",
+    "description": "TP-Link Deco X50 to zestaw mesh Wi-Fi 6 przeznaczony do zapewnienia stabilnej sieci bezprzewodowej w biurach i lokalach usługowych. System ułatwia pokrycie większej powierzchni bez konieczności skomplikowanej konfiguracji.",
+    "priceNet": "899.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "sie-tpl-010.jpg"
+    ]
+  },
+  {
+    "category": "Akcesoria",
+    "name": "Dell WD19S USB-C Docking Station",
+    "sku": "AKC-DELL-001",
+    "description": "Dell WD19S to stacja dokująca USB-C przeznaczona do laptopów biznesowych. Umożliwia podłączenie monitorów, sieci przewodowej i akcesoriów jednym przewodem, co porządkuje stanowisko pracy.",
+    "priceNet": "799.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "akc-dell-001.jpg"
+    ]
+  },
+  {
+    "category": "Akcesoria",
+    "name": "Lenovo USB-C Universal Dock",
+    "sku": "AKC-LEN-002",
+    "description": "Lenovo USB-C Universal Dock to uniwersalna stacja dokująca dla stanowisk biurowych opartych na laptopach. Pozwala szybko podłączyć monitor, klawiaturę, mysz, sieć i zasilanie.",
+    "priceNet": "749.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "akc-len-002.jpg"
+    ]
+  },
+  {
+    "category": "Akcesoria",
+    "name": "HP USB-C Dock G5",
+    "sku": "AKC-HP-003",
+    "description": "HP USB-C Dock G5 to kompaktowa stacja dokująca do laptopów biznesowych. Urządzenie ułatwia organizację stanowiska pracy i ogranicza liczbę przewodów podłączanych bezpośrednio do komputera.",
+    "priceNet": "699.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "akc-hp-003.jpg"
+    ]
+  },
+  {
+    "category": "Akcesoria",
+    "name": "Logitech Brio 500 Webcam",
+    "sku": "AKC-LOG-004",
+    "description": "Logitech Brio 500 to kamera internetowa do wideokonferencji i pracy hybrydowej. Oferuje dobrą jakość obrazu, automatyczną korekcję oświetlenia i wygodny montaż na monitorze.",
+    "priceNet": "529.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "akc-log-004.jpg"
+    ]
+  },
+  {
+    "category": "Akcesoria",
+    "name": "Jabra Evolve2 40 USB-C",
+    "sku": "AKC-JAB-005",
+    "description": "Jabra Evolve2 40 USB-C to przewodowy zestaw słuchawkowy do spotkań online i pracy w contact center. Zapewnia czytelny dźwięk rozmów oraz komfort użytkowania przez cały dzień pracy.",
+    "priceNet": "399.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 2,
+    "images": [
+      "akc-jab-005.jpg"
+    ]
+  },
+  {
+    "category": "Akcesoria",
+    "name": "Poly Blackwire 5220 USB-A",
+    "sku": "AKC-POL-006",
+    "description": "Poly Blackwire 5220 to zestaw słuchawkowy do komunikacji biznesowej i wideokonferencji. Model oferuje wygodną konstrukcję, mikrofon z redukcją hałasu oraz prostą integrację z komputerami służbowymi.",
+    "priceNet": "329.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 2,
+    "images": [
+      "akc-pol-006.jpg"
+    ]
+  },
+  {
+    "category": "Akcesoria",
+    "name": "Kensington Slim N17 Lock",
+    "sku": "AKC-KEN-007",
+    "description": "Kensington Slim N17 Lock to linka zabezpieczająca do laptopów i stacji roboczych. Rozwiązanie pozwala ograniczyć ryzyko kradzieży sprzętu w biurach, salach szkoleniowych i przestrzeniach współdzielonych.",
+    "priceNet": "179.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 3,
+    "images": [
+      "akc-ken-007.jpg"
+    ]
+  },
+  {
+    "category": "Akcesoria",
+    "name": "Belkin USB-C to HDMI Adapter",
+    "sku": "AKC-BEL-008",
+    "description": "Belkin USB-C to HDMI Adapter umożliwia podłączenie laptopa z portem USB-C do monitora lub projektora HDMI. Adapter sprawdzi się w salach konferencyjnych, stanowiskach hot desk i pracy mobilnej.",
+    "priceNet": "119.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 5,
+    "images": [
+      "akc-bel-008.jpg"
+    ]
+  },
+  {
+    "category": "Akcesoria",
+    "name": "Logitech Rally Bar Mini Mount",
+    "sku": "AKC-LOG-009",
+    "description": "Logitech Rally Bar Mini Mount to uchwyt montażowy do systemów wideokonferencyjnych. Pozwala uporządkować instalację sprzętu AV w salach spotkań i poprawia estetykę stanowiska konferencyjnego.",
+    "priceNet": "449.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "akc-log-009.jpg"
+    ]
+  },
+  {
+    "category": "Akcesoria",
+    "name": "APC Back-UPS 950VA",
+    "sku": "AKC-APC-010",
+    "description": "APC Back-UPS 950VA to zasilacz awaryjny przeznaczony do zabezpieczenia komputerów, urządzeń sieciowych i punktów sprzedaży. Zapewnia podtrzymanie zasilania oraz ochronę przed podstawowymi zakłóceniami sieci elektrycznej.",
+    "priceNet": "599.00",
+    "vatRate": "23.00",
+    "unit": "szt.",
+    "minimumOrderQuantity": 1,
+    "images": [
+      "akc-apc-010.jpg"
+    ]
+  }
+]
