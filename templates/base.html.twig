@@ -43,15 +43,13 @@
                         {% endif %}
 
                         {% if is_granted('ROLE_ADMIN') %}
-                            {% if app.request.attributes.get('_route') == 'app_admin' %}
-                                <a class="btn btn-outline-light btn-sm" href="{{ path('app_home') }}">
-                                    Home
-                                </a>
-                            {% else %}
-                                <a class="btn btn-outline-light btn-sm" href="{{ path('app_admin') }}">
-                                    Admin
-                                </a>
-                            {% endif %}
+                            <a class="btn btn-outline-light btn-sm" href="{{ path('app_admin') }}">
+                                Admin
+                            </a>
+                        {% elseif is_granted('ROLE_EMPLOYEE') %}
+                            <a class="btn btn-outline-light btn-sm" href="{{ path('app_admin_orders') }}">
+                                Zamówienia
+                            </a>
                         {% endif %}
 
                         <a class="btn btn-outline-light btn-sm" href="{{ path('app_logout') }}">

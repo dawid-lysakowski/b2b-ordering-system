@@ -12,7 +12,6 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Doctrine\ORM\EntityManagerInterface;
 
 #[Route('/admin/orders')]
-#[IsGranted('ROLE_ADMIN')]
 final class AdminOrderController extends AbstractController
 {
     #[Route('', name: 'app_admin_orders', methods: ['GET'])]
