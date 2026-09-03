@@ -71,6 +71,10 @@ class CartItem
 
     public function getUnitPriceNet(): ?string
     {
+        if ($this->product) {
+            return $this->product->getPriceNet();
+        }
+
         return $this->unitPriceNet;
     }
 
@@ -83,7 +87,7 @@ class CartItem
 
     public function getTotalNet(): float
     {
-        return (float) $this->unitPriceNet * $this->quantity;
+        return (float) $this->getUnitPriceNet() * $this->quantity;
     }
 
     public function getTotalGross(): float
