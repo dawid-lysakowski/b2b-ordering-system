@@ -11,7 +11,11 @@
 
                 {% if error %}
                     <div class="alert alert-danger">
-                        Nieprawidłowy adres e-mail lub hasło.
+                        {% if error.messageKey == 'Invalid credentials.' %}
+                            Nieprawidłowy adres e-mail lub hasło.
+                        {% else %}
+                            {{ error.messageKey|trans(error.messageData, 'security') }}
+                        {% endif %}
                     </div>
                 {% endif %}
 
