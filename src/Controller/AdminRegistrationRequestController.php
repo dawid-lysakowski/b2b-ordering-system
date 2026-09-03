@@ -20,13 +20,15 @@ final class AdminRegistrationRequestController extends AbstractController
         EntityManagerInterface $entityManager,
         Request $request
     ): Response {
-        $status = $request->query->get('status');
+        $status = $request->query->get('status', 'pending');
 
-        $criteria = [];
-
-        if (in_array($status, ['pending', 'approved', 'rejected'], true)) {
-            $criteria['status'] = $status;
+        if (!in_array($status, ['pending', 'approved', 'rejected'], true)) {
+            $status = 'pending';
         }
+
+        $criteria = [
+            'status' => $status,
+        ];
 
         $registrationRequests = $entityManager
             ->getRepository(ClientRegistrationRequest::class)

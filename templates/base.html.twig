@@ -42,16 +42,6 @@
                             </a>
                         {% endif %}
 
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <a class="btn btn-outline-light btn-sm" href="{{ path('app_admin') }}">
-                                Admin
-                            </a>
-                        {% elseif is_granted('ROLE_EMPLOYEE') %}
-                            <a class="btn btn-outline-light btn-sm" href="{{ path('app_admin_orders') }}">
-                                Zamówienia
-                            </a>
-                        {% endif %}
-
                         <a class="btn btn-outline-light btn-sm" href="{{ path('app_logout') }}">
                             Wyloguj
                         </a>
