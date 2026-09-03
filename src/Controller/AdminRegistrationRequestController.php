@@ -10,30 +10,51 @@ use App\Entity\ClientRegistrationRequest;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class AdminRegistrationRequestController extends AbstractController
 {
     #[Route('/admin/registration-requests', name: 'app_admin_registration_requests')]
-    public function index(EntityManagerInterface $entityManager): Response
-    {
+    public function index(
+        EntityManagerInterface $entityManager,
+        Request $request
+    ): Response {
+        $status = $request->query->get('status');
+
+        $criteria = [];
+
+        if (in_array($status, ['pending', 'approved', 'rejected'], true)) {
+            $criteria['status'] = $status;
+        }
+
         $registrationRequests = $entityManager
             ->getRepository(ClientRegistrationRequest::class)
             ->findBy(
-                ['status' => 'pending'],
+                $criteria,
                 ['createdAt' => 'DESC']
             );
 
         return $this->render('admin_registration_request/index.html.twig', [
             'registrationRequests' => $registrationRequests,
+            'currentStatus' => $status,
         ]);
     }
 
     #[Route('/admin/registration-requests/{id}', name: 'app_admin_registration_request_show')]
-    public function show(ClientRegistrationRequest $registrationRequest): Response
-    {
+    public function show(
+        ClientRegistrationRequest $registrationRequest,
+        EntityManagerInterface $entityManager
+    ): Response {
+        $existingCompany = $entityManager
+            ->getRepository(CustomerCompany::class)
+            ->findOneBy([
+                'taxNumber' => $registrationRequest->getTaxNumber(),
+            ]);
+
         return $this->render('admin_registration_request/show.html.twig', [
             'registrationRequest' => $registrationRequest,
+            'existingCompany' => $existingCompany,
         ]);
     }
 
@@ -73,28 +94,40 @@ final class AdminRegistrationRequestController extends AbstractController
             ]);
         }
 
-        $company = new CustomerCompany();
-        $company->setName($registrationRequest->getCompanyName());
-        $company->setTaxNumber($registrationRequest->getTaxNumber());
-        $company->setEmail($registrationRequest->getCompanyEmail());
-        $company->setPhone($registrationRequest->getCompanyPhone());
-        $company->setIsActive(true);
-        $company->setCreatedAt(new \DateTimeImmutable());
+        $company = $entityManager
+            ->getRepository(CustomerCompany::class)
+            ->findOneBy([
+                'taxNumber' => $registrationRequest->getTaxNumber(),
+            ]);
 
-        $entityManager->persist($company);
+        $isExistingCompany = $company !== null;
 
-        $billingAddressData = $registrationRequest->getBillingAddressData();
-        $deliveryAddressData = $registrationRequest->getDeliveryAddressData();
+        if (!$company) {
+            $company = new CustomerCompany();
+            $company->setName($registrationRequest->getCompanyName());
+            $company->setTaxNumber($registrationRequest->getTaxNumber());
+            $company->setEmail($registrationRequest->getCompanyEmail());
+            $company->setPhone($registrationRequest->getCompanyPhone());
+            $company->setIsActive(true);
+            $company->setCreatedAt(new \DateTimeImmutable());
 
-        if ($billingAddressData == $deliveryAddressData) {
-            $address = $this->createAddressFromData($billingAddressData, 'both', $company);
-            $entityManager->persist($address);
-        } else {
-            $billingAddress = $this->createAddressFromData($billingAddressData, 'billing', $company);
-            $deliveryAddress = $this->createAddressFromData($deliveryAddressData, 'delivery', $company);
+            $entityManager->persist($company);
+        }
 
-            $entityManager->persist($billingAddress);
-            $entityManager->persist($deliveryAddress);
+        if (!$isExistingCompany) {
+            $billingAddressData = $registrationRequest->getBillingAddressData();
+            $deliveryAddressData = $registrationRequest->getDeliveryAddressData();
+
+            if ($billingAddressData == $deliveryAddressData) {
+                $address = $this->createAddressFromData($billingAddressData, 'both', $company);
+                $entityManager->persist($address);
+            } else {
+                $billingAddress = $this->createAddressFromData($billingAddressData, 'billing', $company);
+                $deliveryAddress = $this->createAddressFromData($deliveryAddressData, 'delivery', $company);
+
+                $entityManager->persist($billingAddress);
+                $entityManager->persist($deliveryAddress);
+            }
         }
 
         $client = new User();
@@ -115,12 +148,25 @@ final class AdminRegistrationRequestController extends AbstractController
 
         $entityManager->persist($cart);
 
+        if ($isExistingCompany) {
+            $registrationRequest->setMatchedCustomerCompany($company);
+        }
         $registrationRequest->setStatus('approved');
         $registrationRequest->setReviewedAt(new \DateTimeImmutable());
 
         $entityManager->flush();
 
-        $this->addFlash('success', 'Zgłoszenie zostało zaakceptowane. Utworzono firmę, konto klienta oraz koszyk.');
+        if ($isExistingCompany) {
+            $this->addFlash(
+                'success',
+                'Zgłoszenie zostało zaakceptowane. Utworzono konto klienta i przypisano je do istniejącej firmy.'
+            );
+        } else {
+            $this->addFlash(
+                'success',
+                'Zgłoszenie zostało zaakceptowane. Utworzono firmę, konto klienta oraz koszyk.'
+            );
+        }
 
         return $this->redirectToRoute('app_admin_registration_requests');
     }

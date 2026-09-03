@@ -39,9 +39,23 @@
 
                     <dt class="col-sm-4">Status</dt>
                     <dd class="col-sm-8">
-                        <span class="badge bg-warning text-dark">
-                            {{ registrationRequest.status }}
-                        </span>
+                        {% if registrationRequest.status == 'pending' %}
+                            <span class="badge bg-warning text-dark">Oczekujące</span>
+                        {% elseif registrationRequest.status == 'approved' %}
+                        {% if registrationRequest.matchedCustomerCompany %}
+                            <span class="badge bg-success">
+                                Istniejąca firma
+                            </span>
+                        {% else %}
+                            <span class="badge bg-success">
+                                Zaakceptowane
+                            </span>
+                        {% endif %}
+                        {% elseif registrationRequest.status == 'rejected' %}
+                            <span class="badge bg-danger">Odrzucone</span>
+                        {% else %}
+                            <span class="badge bg-secondary">{{ registrationRequest.status }}</span>
+                        {% endif %}
                     </dd>
 
                     <dt class="col-sm-4">Data zgłoszenia</dt>
@@ -139,13 +153,36 @@
     </div>
 </div>
 
+{% if registrationRequest.status == 'pending' and existingCompany %}
+    <div class="alert alert-warning mt-4">
+        <h2 class="h5">Firma o podanym numerze NIP już istnieje</h2>
+
+        <p class="mb-2">
+            W systemie znaleziono firmę:
+            <strong>{{ existingCompany.name }}</strong>
+        </p>
+
+        <p class="mb-2">
+            NIP: <strong>{{ existingCompany.taxNumber }}</strong>
+        </p>
+
+        <p class="mb-0">
+            Akceptacja tego zgłoszenia spowoduje utworzenie nowego konta użytkownika
+            i przypisanie go do istniejącej firmy.
+        </p>
+    </div>
+{% endif %}
+
 {% if registrationRequest.status == 'pending' %}
     <div class="d-flex justify-content-end gap-2 mt-4">
         <form method="post"
-              action="{{ path('app_admin_registration_request_approve', { id: registrationRequest.id }) }}"
-              onsubmit="return confirm('Czy na pewno chcesz zaakceptować to zgłoszenie?');">
+            action="{{ path('app_admin_registration_request_approve', { id: registrationRequest.id }) }}"
+            onsubmit="return confirm('{{ existingCompany
+                ? 'Czy chcesz utworzyć konto użytkownika i przypisać je do istniejącej firmy ' ~ existingCompany.name ~ '?'
+                : 'Czy na pewno chcesz zaakceptować zgłoszenie i utworzyć nową firmę?'
+            }}');">
             <button type="submit" class="btn btn-success">
-                Akceptuj zgłoszenie
+                {{ existingCompany ? 'Przypisz użytkownika do firmy' : 'Akceptuj zgłoszenie' }}
             </button>
         </form>
 
