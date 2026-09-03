@@ -66,7 +66,7 @@ class CartController extends AbstractController
         }
 
         if (!$this->isProductAvailable($product)) {
-            throw $this->createNotFoundException('Produkt nie jest dostępny.');
+            throw $this->createNotFoundException('Produkt nie jest już dostępny. Usuń go z koszyka, aby kontynuować.');
         }
 
         $quantity = (int) $request->request->get('quantity', 0);
@@ -128,11 +128,11 @@ class CartController extends AbstractController
             if ($request->isXmlHttpRequest()) {
                 return new JsonResponse([
                     'success' => false,
-                    'message' => 'Produkt nie jest już dostępny.',
+                    'message' => 'Produkt nie jest już dostępny. Usuń go z koszyka, aby kontynuować.',
                 ], Response::HTTP_BAD_REQUEST);
             }
 
-            $this->addFlash('danger', 'Produkt nie jest już dostępny.');
+            $this->addFlash('danger', 'Produkt nie jest już dostępny. Usuń go z koszyka, aby kontynuować.');
 
             return $this->redirectToRoute('app_cart');
         }

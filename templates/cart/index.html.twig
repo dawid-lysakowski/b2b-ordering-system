@@ -75,22 +75,34 @@
                                 </td>
 
                                 <td>
-                                    <input type="number"
-                                        name="quantity"
-                                        class="form-control form-control-sm js-cart-quantity"
-                                        min="{{ product.minimumOrderQuantity }}"
-                                        value="{{ item.quantity }}"
-                                        step="1"
-                                        data-update-url="{{ path('app_cart_item_update', { id: item.id }) }}"
-                                        data-current-value="{{ item.quantity }}"
-                                        data-item-id="{{ item.id }}"
-                                        required>
+                                    {% if product.isActive and (product.category is null or product.category.isActive) %}
+                                        <input type="number"
+                                            name="quantity"
+                                            class="form-control form-control-sm js-cart-quantity"
+                                            min="{{ product.minimumOrderQuantity }}"
+                                            value="{{ item.quantity }}"
+                                            step="1"
+                                            data-update-url="{{ path('app_cart_item_update', { id: item.id }) }}"
+                                            data-current-value="{{ item.quantity }}"
+                                            data-item-id="{{ item.id }}"
+                                            required>
 
-                                    <div class="small text-muted mt-1">
-                                        Min.: {{ product.minimumOrderQuantity }} {{ product.unit }}
-                                    </div>
+                                        <div class="small text-muted mt-1">
+                                            Min.: {{ product.minimumOrderQuantity }} {{ product.unit }}
+                                        </div>
 
-                                    <div class="small text-muted mt-1 js-cart-quantity-status" data-status-for="{{ item.id }}"></div>
+                                        <div class="small text-muted mt-1 js-cart-quantity-status"
+                                            data-status-for="{{ item.id }}"></div>
+                                    {% else %}
+                                        <input type="number"
+                                            class="form-control form-control-sm"
+                                            value="{{ item.quantity }}"
+                                            disabled>
+
+                                        <div class="small text-danger mt-1">
+                                            Produkt niedostępny
+                                        </div>
+                                    {% endif %}
                                 </td>
 
                                 <td class="text-end" data-item-total-net="{{ item.id }}">

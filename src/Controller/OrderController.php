@@ -45,6 +45,50 @@ final class OrderController extends AbstractController
             throw $this->createAccessDeniedException();
         }
 
+        foreach ($cart->getItems() as $cartItem) {
+            $product = $cartItem->getProduct();
+
+            if (!$product->isActive()) {
+                $this->addFlash(
+                    'danger',
+                    sprintf(
+                        'Produkt "%s" nie jest już dostępny. Usuń go z koszyka, aby złożyć zamówienie.',
+                        $product->getName()
+                    )
+                );
+
+                return $this->redirectToRoute('app_cart');
+            }
+
+            if (
+                $product->getCategory()
+                && !$product->getCategory()->isActive()
+            ) {
+                $this->addFlash(
+                    'danger',
+                    sprintf(
+                        'Kategoria produktu "%s" jest nieaktywna.',
+                        $product->getName()
+                    )
+                );
+
+                return $this->redirectToRoute('app_cart');
+            }
+
+            if ($cartItem->getQuantity() < $product->getMinimumOrderQuantity()) {
+                $this->addFlash(
+                    'danger',
+                    sprintf(
+                        'Minimalna ilość zamówienia dla produktu "%s" wynosi %s.',
+                        $product->getName(),
+                        $product->getMinimumOrderQuantity()
+                    )
+                );
+
+                return $this->redirectToRoute('app_cart');
+            }
+        }
+
         $order = new CustomerOrder();
 
         $order->setOrderNumber(
