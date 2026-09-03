@@ -18,7 +18,7 @@ class CustomerCompany
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 20)]
+    #[ORM\Column(length: 20, unique: true)]
     private ?string $taxNumber = null;
 
     #[ORM\Column(length: 255)]
