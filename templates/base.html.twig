@@ -9,6 +9,7 @@
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
 
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-icons.css') }}">
 
         {% block stylesheets %}
         {% endblock %}
@@ -25,20 +26,18 @@
                     {% if app.user %}
 
                         {% if is_granted('ROLE_CLIENT') %}
-                            <a class="btn btn-outline-light btn-sm" href="{{ path('app_profile') }}">
-                                Mój profil
-                            </a>
-                            
-                            <a class="btn btn-outline-light btn-sm" href="{{ path('app_products') }}">
-                                Produkty
-                            </a>
-
-                            <a class="btn btn-outline-light btn-sm" href="{{ path('app_cart') }}">
-                                Koszyk
+                            <a class="btn btn-outline-light btn-sm"
+                            href="{{ path('app_profile') }}"
+                            title="Mój profil"
+                            aria-label="Mój profil">
+                                <i class="bi bi-person"></i>
                             </a>
 
-                            <a class="btn btn-outline-light btn-sm" href="{{ path('app_orders') }}">
-                                Moje zamówienia
+                            <a class="btn btn-outline-light btn-sm"
+                            href="{{ path('app_cart') }}"
+                            title="Koszyk"
+                            aria-label="Koszyk">
+                                <i class="bi bi-cart"></i>
                             </a>
                         {% endif %}
 

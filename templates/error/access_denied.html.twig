@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Brak dostępu{% endblock %}
+
+{% block body %}
+<div class="p-5 mb-4 bg-light rounded-3 border">
+    <h1 class="display-5 fw-bold">Brak dostępu</h1>
+    <p class="fs-5">
+        Nie masz uprawnień do wyświetlenia tej strony.
+    </p>
+    <a href="{{ path('app_home') }}" class="btn btn-primary">
+        Powrót
+    </a>
+</div>
+{% endblock %}
