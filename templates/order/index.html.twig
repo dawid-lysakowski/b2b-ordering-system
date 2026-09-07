@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Moje zamówienia{% endblock %}
+{% block title %}Zamówienia firmy{% endblock %}
 
 {% block body %}
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
-        <h1 class="h3 mb-1">Moje zamówienia</h1>
+        <h1 class="h3 mb-1">Zamówienia</h1>
         <p class="text-muted mb-0">
-            Historia wszystkich złożonych zamówień.
+            Historia zamówień złożonych przez użytkowników Twojej firmy.
         </p>
     </div>
 
@@ -24,6 +24,7 @@
                     <thead class="table-light">
                         <tr>
                             <th>Nr zamówienia</th>
+                            <th>Złożone przez</th>
                             <th>Data</th>
                             <th>Status</th>
                             <th class="text-end">Netto</th>
@@ -37,6 +38,10 @@
                             <tr>
                                 <td>
                                     <strong>{{ order.orderNumber }}</strong>
+                                </td>
+
+                                <td>
+                                    {{ order.client.firstName }} {{ order.client.lastName }}
                                 </td>
 
                                 <td>
@@ -59,7 +64,7 @@
 
                                 <td class="text-end">
                                     <a href="{{ path('app_order_show', { id: order.id }) }}"
-                                    class="btn btn-sm btn-outline-primary">
+                                       class="btn btn-sm btn-outline-primary">
                                         Szczegóły
                                     </a>
                                 </td>
@@ -76,7 +81,7 @@
             <h2 class="h5">Brak zamówień</h2>
 
             <p class="text-muted">
-                Nie złożono jeszcze żadnego zamówienia.
+                Twoja firma nie złożyła jeszcze żadnego zamówienia.
             </p>
 
             <a href="{{ path('app_products') }}" class="btn btn-primary">
